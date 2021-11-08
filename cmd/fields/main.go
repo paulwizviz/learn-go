@@ -27,6 +27,20 @@ type Addresses struct {
 	Secondary Address
 }
 
+type IPerson interface {
+	FirstName() string
+}
+
+type person struct{}
+
+func (p *person) FirstName() string {
+	return "first na,e"
+}
+
+func NewIPerson() IPerson {
+	return &person{}
+}
+
 func ExtractFieldNames(data interface{}) {
 	elm := reflect.ValueOf(data).Elem()
 
@@ -90,4 +104,8 @@ func main() {
 		},
 	}
 	ExtractFieldNames(addr)
+
+	fmt.Println("======== IPerson ===========")
+	iPerson := NewIPerson()
+	ExtractFieldNames(iPerson)
 }
