@@ -8,8 +8,8 @@ import (
 type IPerson interface{}
 
 type Person struct {
-	FirstName string
-	Surname   string
+	FirstName string `json:"firstname" c:"first_name"`
+	Surname   string `json:"surname" c:"surname"`
 }
 
 type Address struct {
@@ -179,6 +179,35 @@ func Example_fields() {
 	// {Person  inspect.Person  0 [0] true}
 	// {Address  inspect.Address  32 [1] true}
 	// {Landsize  int  80 [2] false}
+}
+
+func Example_extractTags() {
+	p := Person{}
+	value := reflect.Indirect(reflect.ValueOf(p))
+	tags := make(map[string]reflect.StructTag)
+	for index := 0; index < value.Type().NumField(); index++ {
+		fn := value.Type().Field(index).Name
+		tag := value.Type().Field(index).Tag
+		tags[fn] = tag
+	}
+	fmt.Println(tags)
+
+	fmt.Println("----")
+
+	ptr := &p
+	value = reflect.Indirect(reflect.ValueOf(ptr))
+	tags = make(map[string]reflect.StructTag)
+	for index := 0; index < value.Type().NumField(); index++ {
+		fn := value.Type().Field(index).Name
+		tag := value.Type().Field(index).Tag
+		tags[fn] = tag
+	}
+	fmt.Println(tags)
+
+	// Output:
+	// map[FirstName:json:"firstname" c:"first_name" Surname:json:"surname" c:"surname"]
+	// ----
+	// map[FirstName:json:"firstname" c:"first_name" Surname:json:"surname" c:"surname"]
 }
 
 func Example_inspectStructs() {
