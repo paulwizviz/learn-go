@@ -1,4 +1,4 @@
-package serialize
+package serial
 
 import (
 	"encoding/json"
@@ -9,15 +9,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type Task struct {
+// Model
+type task struct {
 	ID      int64     `json:"id"`
 	Name    string    `json:"name"`
 	Created time.Time `json:"created"` // Marshal this to int (Day) only
 }
 
-func (t *Task) MarshalJSON() ([]byte, error) {
+func (t *task) MarshalJSON() ([]byte, error) {
 
-	type Alias Task
+	type Alias task
 	return json.Marshal(&struct {
 		*Alias
 		Created int64 `json:"created"` // Changing created from time.Time to Unix time
@@ -27,8 +28,8 @@ func (t *Task) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (t *Task) UnmarshalJSON(data []byte) error {
-	type Alias Task
+func (t *task) UnmarshalJSON(data []byte) error {
+	type Alias task
 	aux := &struct {
 		*Alias
 		Created int64 `json:"created"`
@@ -43,11 +44,12 @@ func (t *Task) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// Test cases
 func TestMarshalTask(t *testing.T) {
 	now := time.Now()
 	expected := now.Unix()
 
-	tsk := &Task{
+	tsk := &task{
 		ID:      1,
 		Name:    "hello",
 		Created: now,
@@ -62,9 +64,9 @@ func TestMarshalTask(t *testing.T) {
 
 func TestUnmarshalTask(t *testing.T) {
 	s := `{"id":1,"name":"hello","created":1650297458}`
-	var actual Task
+	var actual task
 	json.Unmarshal([]byte(s), &actual)
-	expected := Task{
+	expected := task{
 		ID:      1,
 		Name:    "hello",
 		Created: time.Unix(1650297458, 0),
