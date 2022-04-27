@@ -6,6 +6,7 @@ import (
 	"fmt"
 )
 
+// Model
 type Sender struct {
 	X, Y, z int
 }
@@ -17,6 +18,8 @@ type SenderP struct {
 type Receiver struct {
 	X, Y, Z *int8
 }
+
+// Examples
 
 func Example_simpleStruct() {
 	s := Sender{

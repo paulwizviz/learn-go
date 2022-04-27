@@ -40,33 +40,6 @@ func (t *task) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func Example_marshalTask() {
-
-	tm, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
-
-	tsk := &task{
-		ID:      1,
-		Name:    "hello",
-		Created: tm,
-	}
-
-	b, _ := json.Marshal(tsk)
-	fmt.Printf("Input struct: %v | Marshalled: %v", tsk, string(b))
-
-	// Output:
-	// Input struct: &{1 hello 2006-01-02 15:04:05 +0000 UTC} | Marshalled: {"id":1,"name":"hello","created":1136214245}
-}
-
-func Example_unmarshalTask() {
-	s := `{"id":1,"name":"hello","created":1650297458}`
-	var actual task
-	json.Unmarshal([]byte(s), &actual)
-	fmt.Printf("Marshalled: %v Unmarshalled: %v", s, actual)
-
-	// Output:
-	// Marshalled: {"id":1,"name":"hello","created":1650297458} Unmarshalled: {1 hello 2022-04-18 16:57:38 +0100 BST}
-}
-
 type project interface {
 	Identifier() string
 }
@@ -103,6 +76,34 @@ func (d *defaultProject) UnmarshalJSON(data []byte) error {
 	}
 	d.ID = alt.ID
 	return nil
+}
+
+// Examples
+func Example_marshalTask() {
+
+	tm, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
+
+	tsk := &task{
+		ID:      1,
+		Name:    "hello",
+		Created: tm,
+	}
+
+	b, _ := json.Marshal(tsk)
+	fmt.Printf("Input struct: %v | Marshalled: %v", tsk, string(b))
+
+	// Output:
+	// Input struct: &{1 hello 2006-01-02 15:04:05 +0000 UTC} | Marshalled: {"id":1,"name":"hello","created":1136214245}
+}
+
+func Example_unmarshalTask() {
+	s := `{"id":1,"name":"hello","created":1650297458}`
+	var actual task
+	json.Unmarshal([]byte(s), &actual)
+	fmt.Printf("Marshalled: %v Unmarshalled: %v", s, actual)
+
+	// Output:
+	// Marshalled: {"id":1,"name":"hello","created":1650297458} Unmarshalled: {1 hello 2022-04-18 16:57:38 +0100 BST}
 }
 
 func Example_marshalProject() {

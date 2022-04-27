@@ -2,6 +2,7 @@ package serial
 
 import (
 	"fmt"
+	"sort"
 
 	"gopkg.in/yaml.v2"
 )
@@ -32,7 +33,7 @@ type ComplexStruct struct {
 	Subprojects []SimpleStruct `yaml:"Subprojects"`
 }
 
-// Test cases for marshalling
+// Examples
 func Example_marshalSimpleStruct() {
 	s := SimpleStruct{}
 	output, err := yaml.Marshal(s)
@@ -167,7 +168,15 @@ field2: 1.0
 		fmt.Println("This is not be expected")
 	}
 
-	for _, v := range d {
+	keys := []string{}
+	for key, _ := range d {
+		keys = append(keys, key)
+	}
+
+	sort.Strings(keys)
+
+	for _, k := range keys {
+		v := d[k]
 		switch vv := v.(type) {
 		case int:
 			fmt.Printf("Type: int Value: %v\n", vv)

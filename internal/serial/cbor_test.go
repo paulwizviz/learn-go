@@ -6,39 +6,10 @@ import (
 	"github.com/fxamacker/cbor/v2"
 )
 
+// Model
 type person struct {
 	Firstname string
 	Surname   string
-}
-
-func Example_marshalCBOR() {
-
-	input := person{
-		Firstname: "john",
-		Surname:   "doe",
-	}
-
-	b, _ := cbor.Marshal(input)
-	fmt.Printf("Input: %v Marshal string: %s Marshal bytes: %v", input, string(b), b)
-
-	// Output:
-}
-
-func Example_umarshalCBOR() {
-
-	input := person{
-		Firstname: "john",
-		Surname:   "doe",
-	}
-
-	b, _ := cbor.Marshal(input)
-
-	var p person
-	cbor.Unmarshal(b, &p)
-	fmt.Println(p)
-
-	// Output:
-	// {john doe}
 }
 
 type human interface {
@@ -89,15 +60,46 @@ func NewHuman(firstname, surname string) human {
 	}
 }
 
+// Examples
+func Example_marshalCBOR() {
+
+	input := person{
+		Firstname: "john",
+		Surname:   "doe",
+	}
+
+	b, _ := cbor.Marshal(input)
+	fmt.Printf("Input: %v Marshal bytes: %v", input, b)
+
+	// Output:
+	// Input: {john doe} Marshal bytes: [162 105 70 105 114 115 116 110 97 109 101 100 106 111 104 110 103 83 117 114 110 97 109 101 99 100 111 101]
+
+}
+
+func Example_umarshalCBOR() {
+
+	input := person{
+		Firstname: "john",
+		Surname:   "doe",
+	}
+
+	b, _ := cbor.Marshal(input)
+
+	var p person
+	cbor.Unmarshal(b, &p)
+	fmt.Println(p)
+
+	// Output:
+	// {john doe}
+}
+
 func Example_marshalInterfaceCBOR() {
 	h := NewHuman("john", "doe")
 	b, _ := cbor.Marshal(h)
-	for _, r := range b {
-		fmt.Print(string(r))
-	}
+	fmt.Println(b)
 
 	// Output:
-	// ¢a1djohna2cdoe
+	// [162 105 70 105 114 115 116 110 97 109 101 100 106 111 104 110 103 83 117 114 110 97 109 101 99 100 111 101]
 }
 
 func Example_unmarshalInterfaceCBOR() {
