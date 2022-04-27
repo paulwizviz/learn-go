@@ -65,3 +65,60 @@ func Example_unmarshalTask() {
 	// Output:
 	// Marshalled: {"id":1,"name":"hello","created":1650297458} Unmarshalled: {1 hello 2022-04-18 16:57:38 +0100 BST}
 }
+
+type project interface {
+	Identifier() string
+}
+
+type defaultProject struct {
+	ID string `json:"id"`
+}
+
+func NewProject(id string) project {
+	return &defaultProject{
+		ID: id,
+	}
+}
+
+func (d *defaultProject) Identifier() string {
+	return d.ID
+}
+
+func (d *defaultProject) MarshalJSON() ([]byte, error) {
+	return json.Marshal(&struct {
+		ID string `json:"id"`
+	}{
+		ID: d.ID,
+	})
+}
+
+func (d *defaultProject) UnmarshalJSON(data []byte) error {
+	var alt struct {
+		ID string `json:"id"`
+	}
+	err := json.Unmarshal(data, &alt)
+	if err != nil {
+		return err
+	}
+	d.ID = alt.ID
+	return nil
+}
+
+func Example_marshalProject() {
+	p := NewProject("hello")
+	d, _ := json.Marshal(p)
+	fmt.Println(string(d))
+
+	// Output:
+	// {"id":"hello"}
+}
+
+func Example_unmarshalProject() {
+	p := NewProject("")
+	// var p project -- It is not possible to unmarshal to p here
+	err := json.Unmarshal([]byte(`{"id":"hello"}`), &p)
+	fmt.Println(p, err)
+
+	// Output:
+	// &{hello} <nil>
+}
