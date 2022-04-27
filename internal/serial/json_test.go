@@ -41,19 +41,20 @@ func (t *task) UnmarshalJSON(data []byte) error {
 }
 
 func Example_marshalTask() {
-	now := time.Now()
+
+	tm, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
 
 	tsk := &task{
 		ID:      1,
 		Name:    "hello",
-		Created: now,
+		Created: tm,
 	}
 
 	b, _ := json.Marshal(tsk)
 	fmt.Printf("Input struct: %v | Marshalled: %v", tsk, string(b))
 
 	// Output:
-	// Input struct: &{1 hello 2022-04-27 11:12:14.629277 +0100 BST m=+0.001260505} Marshalled: {"id":1,"name":"hello","created":1651054334}
+	// Input struct: &{1 hello 2006-01-02 15:04:05 +0000 UTC} | Marshalled: {"id":1,"name":"hello","created":1136214245}
 }
 
 func Example_unmarshalTask() {

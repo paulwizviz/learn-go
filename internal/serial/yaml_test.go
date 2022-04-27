@@ -267,6 +267,6 @@ func Example_unmarshalMappingSequenceSimpleStruct() {
 	}
 
 	// Output:
-	// Type: goyaml.SimpleStruct Value: {field1.1 field1.2}
-	// Type: goyaml.SimpleStruct Value: {field2.1 field2.2}
+	// Type: serial.SimpleStruct Value: {field1.1 field1.2}
+	// Type: serial.SimpleStruct Value: {field2.1 field2.2}
 }
