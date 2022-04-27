@@ -2,11 +2,8 @@ package serial
 
 import (
 	"encoding/json"
-	"strconv"
-	"testing"
+	"fmt"
 	"time"
-
-	"github.com/stretchr/testify/assert"
 )
 
 // Model
@@ -17,7 +14,6 @@ type task struct {
 }
 
 func (t *task) MarshalJSON() ([]byte, error) {
-
 	type Alias task
 	return json.Marshal(&struct {
 		*Alias
@@ -44,10 +40,8 @@ func (t *task) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// Test cases
-func TestMarshalTask(t *testing.T) {
+func Example_marshalTask() {
 	now := time.Now()
-	expected := now.Unix()
 
 	tsk := &task{
 		ID:      1,
@@ -56,20 +50,18 @@ func TestMarshalTask(t *testing.T) {
 	}
 
 	b, _ := json.Marshal(tsk)
-	// b = {"id":1,"name":"hello","created":1650297458}
-	s := string(b)
-	tm, _ := strconv.Atoi(s[33 : len(s)-1])
-	assert.Equal(t, expected, int64(tm))
+	fmt.Printf("Input struct: %v | Marshalled: %v", tsk, string(b))
+
+	// Output:
+	// Input struct: &{1 hello 2022-04-27 11:12:14.629277 +0100 BST m=+0.001260505} Marshalled: {"id":1,"name":"hello","created":1651054334}
 }
 
-func TestUnmarshalTask(t *testing.T) {
+func Example_unmarshalTask() {
 	s := `{"id":1,"name":"hello","created":1650297458}`
 	var actual task
 	json.Unmarshal([]byte(s), &actual)
-	expected := task{
-		ID:      1,
-		Name:    "hello",
-		Created: time.Unix(1650297458, 0),
-	}
-	assert.Equal(t, expected, actual)
+	fmt.Printf("Marshalled: %v Unmarshalled: %v", s, actual)
+
+	// Output:
+	// Marshalled: {"id":1,"name":"hello","created":1650297458} Unmarshalled: {1 hello 2022-04-18 16:57:38 +0100 BST}
 }
