@@ -4,16 +4,31 @@ This section discusses serialization techniques
 
 ## Topics covered
 
-* JSON
-* CBOR
-* YAML
-* GOB
 * ASN1
+* Base64
+* CBOR
+* GOB
+* JSON
+* YAML
+
+## Abstract Syntax Notation One (ASN1)
+
+[A Layman's Guide to a Subset of ASN.1, BER, and DER](http://luca.ntop.org/Teaching/Appunti/asn1.html)
+
+
+## Base64
+
+* [Wiki - Base64](https://en.wikipedia.org/wiki/Base64)
+* [The Base16, Base32, and Base64 Data Encodings](https://datatracker.ietf.org/doc/html/rfc4648)
+
+## RFC 8949 Concise Binary Object Representation (CBOR)
+
+[CBOR](https://cbor.io/)
 
 ## Gob
 
 [Gobs of data](https://go.dev/blog/gob)
 
-## Abstract Syntax Notation One (ASN1)
+## YAML
 
-[A Layman's Guide to a Subset of ASN.1, BER, and DER](http://luca.ntop.org/Teaching/Appunti/asn1.html)
+[The Official YAML Web Site](https://yaml.org/)
