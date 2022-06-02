@@ -214,8 +214,8 @@ func Example_extractTags() {
 func Example_inspectStructs() {
 	p := PersonAddress{}
 	result, err := ExtractStructMeta(p)
-	fmt.Println(result, err)
+	fmt.Println(result.Name(), err)
 
 	// Output:
-	// &{inspect.PersonAddress [{Person  0x110aea0  0 [0] true} {Address  0x110eee0  32 [1] true} {Landsize  0x10feec0  80 [2] false}]} <nil>
+	// inspect.PersonAddress <nil>
 }

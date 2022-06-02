@@ -13,6 +13,8 @@ This section discusses serialization techniques
 
 ## Abstract Syntax Notation One (ASN1)
 
+[OSS Nokalva - ASN](https://www.oss.com/resources/resources.html)
+[ASN1 Simple types](https://www.obj-sys.com/asn1tutorial/node10.html)
 [A Layman's Guide to a Subset of ASN.1, BER, and DER](http://luca.ntop.org/Teaching/Appunti/asn1.html)
 
 
