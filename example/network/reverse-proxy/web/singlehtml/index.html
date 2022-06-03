@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple HTML</title>
+    </head>
+    <body>
+        <h1>Axios Example</h1>
+
+        <button id="get" type="button" class="btn btn-primary">GET</button>
+
+        <div id="result" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+        <script>
+            (function(){
+                var result = document.getElementById('result');
+                document.getElementById('get').onclick = function (){
+                    axios.get('/api')
+                        .then(function(res){
+                            result.className = 'container';
+                            result.innerHTML = res.data;
+                        })
+                        .catch(function(err){
+                            result.className = 'container text-danger';
+                            result.innerHTML = err.message;
+                        });
+                };
+            })()
+        </script>
+    </body>
+</html>
