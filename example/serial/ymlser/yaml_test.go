@@ -172,7 +172,7 @@ field2: 1.0
 	}
 
 	keys := []string{}
-	for key, _ := range d {
+	for key := range d {
 		keys = append(keys, key)
 	}
 
