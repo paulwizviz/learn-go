@@ -1,4 +1,4 @@
-package serial
+package asnser
 
 import (
 	"encoding/asn1"

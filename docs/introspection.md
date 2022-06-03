@@ -2,8 +2,10 @@
 
 This section discusses topics related to reflection.
 
-## Reading materials
+## Source
 
 * [The Laws of Reflection](https://go.dev/blog/laws-of-reflection)
 
-## My notes
+## Executable examples
+
+* [inspect_test.go](../example/inspect/inspect_test.go)

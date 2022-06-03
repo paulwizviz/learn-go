@@ -1,4 +1,4 @@
-package serial
+package jsonser
 
 import (
 	"encoding/json"

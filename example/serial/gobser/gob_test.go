@@ -1,4 +1,6 @@
-package serial
+// GOB is a golang specific streams.
+// See https://go.dev/blog/gob
+package gobser
 
 import (
 	"bytes"

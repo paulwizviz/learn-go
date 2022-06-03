@@ -1,4 +1,4 @@
-package serial
+package b64
 
 import (
 	"encoding/base64"

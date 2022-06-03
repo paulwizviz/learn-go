@@ -1,4 +1,7 @@
-package serial
+// YAML is a human-friendly data serialization language for all programming languages.
+// https://yaml.org/
+
+package ymlser
 
 import (
 	"fmt"

@@ -1,4 +1,4 @@
-package serial
+package cborser
 
 import (
 	"fmt"
