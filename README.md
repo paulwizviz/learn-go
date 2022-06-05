@@ -1,18 +1,16 @@
 # Overview
 
-This project contains example codes demonstrating Go system level programming.
+This project contains example codes demonstrating Go programming techniques.
 
 ## Topics
 
-* [Bit operations](./example/bitops/bitops_test.go)
-* [Introspections](./docs/introspection.md)
-* Serialization
-    * [ASN.1](./docs/asn1.md)
-    * [base64](./docs/base64.md)
-    * [cbor](./docs/cbor.md)
-    * [gob](./example/serial/gobser/gob_test.go)
-    * [json](./example/serial/jsonser/json_test.go)
-    * [yaml](./example/serial/ymlser/yaml_test.go)
+* [Concurrency](./docs/concurrent.md)
+* [Primitives](./docs/primitives.md)
+* [IO](./docs/io.md)
+* [Networking](./docs/network.md)
+* [Serialization](./docs/serialization.md)
+* [Structured datatypes](./docs/structs.md)
+* [Templates](./docs/templates.md)
 
 ## Disclaimer
 
