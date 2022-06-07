@@ -92,3 +92,32 @@ func Example_makeArray() {
 	// Length: 1 Capacity: 10 Data: [1]
 	// Length: 2 Capacity: 10 Data: [1 2]
 }
+
+func Example_multiArray() {
+
+	twoArray := make([][]int, 2)
+	for index := 0; index < len(twoArray); index++ {
+		twoArray[index] = make([]int, 2)
+	}
+
+	twoArray[0][0] = 1
+	twoArray[0][1] = 2
+	twoArray[1][0] = 3
+	twoArray[1][1] = 4
+
+	fmt.Printf("Content: %v Len: %v Cap: %v\n", twoArray, len(twoArray), cap(twoArray))
+
+	for indexX := 0; indexX < len(twoArray); indexX++ {
+		for indexY := 0; indexY < len(twoArray[indexX]); indexY++ {
+			fmt.Printf("Content of [%d,%d] is %d\n", indexX, indexY, twoArray[indexX][indexY])
+		}
+	}
+
+	// Output:
+	// Content: [[1 2] [3 4]] Len: 2 Cap: 2
+	// Content of [0,0] is 1
+	// Content of [0,1] is 2
+	// Content of [1,0] is 3
+	// Content of [1,1] is 4
+
+}
