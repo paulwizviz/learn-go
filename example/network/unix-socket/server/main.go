@@ -15,7 +15,7 @@ func processConn(c net.Conn) {
 	if err != nil {
 		log.Fatalf("Unable to read. Reason: %v", err)
 	}
-	fmt.Printf("Received: %s", string(buf[:nr]))
+	fmt.Printf("Received: %s\n", string(buf[:nr]))
 	data := []byte{'h', 'e'}
 	c.Write(data)
 	c.Close()
@@ -25,6 +25,8 @@ func processConn(c net.Conn) {
 func main() {
 	pwd, _ := os.Getwd()
 	socketFile := fmt.Sprintf("%s/temp/echo.sock", pwd)
+
+	fmt.Println(socketFile)
 
 	c := make(chan os.Signal)
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
@@ -47,5 +49,4 @@ func main() {
 		}
 		processConn(fd)
 	}
-
 }
