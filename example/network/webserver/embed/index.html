@@ -8,10 +8,21 @@
 </head>
 
 <body>
-    <p>Welcome to JavaScript</p>
+    <h1>Welcome to JavaScript</h1>
     <form>
-        <input type="button" value="click" onclick="msg()" />
+        <input type="button" value="display dialog" onclick="msg()" />
     </form>
+    <button id="hello" type="button" class="btn btn-primary">Say Hello</button>
+    <h3><div id="result" class="container"></div></h3>
+    <script>
+         (function(){
+                var result = document.getElementById('result');
+                document.getElementById('hello').onclick = function(){
+                result.className = 'container'
+                result.innerHTML = 'hello world'
+            }
+        })()
+    </script>
 </body>
 
 </html>
