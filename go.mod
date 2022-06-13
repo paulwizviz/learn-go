@@ -3,7 +3,6 @@ module github.com/paulwizviz/learn-go
 go 1.18
 
 require (
-	github.com/GeertJohan/go.rice v1.0.2
 	github.com/fxamacker/cbor/v2 v2.4.0
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/viper v1.12.0
@@ -12,7 +11,6 @@ require (
 )
 
 require (
-	github.com/daaku/go.zipexe v1.0.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
