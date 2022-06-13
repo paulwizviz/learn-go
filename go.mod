@@ -6,6 +6,7 @@ require (
 	github.com/fxamacker/cbor/v2 v2.4.0
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/viper v1.12.0
+	golang.org/x/exp v0.0.0-20220613132600-b0d781184e0d
 	gopkg.in/ini.v1 v1.66.4
 	gopkg.in/yaml.v2 v2.4.0
 )
