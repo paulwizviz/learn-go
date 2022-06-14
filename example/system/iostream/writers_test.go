@@ -1,4 +1,4 @@
-package bytestream
+package iostream
 
 import (
 	"bytes"
