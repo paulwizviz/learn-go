@@ -4,6 +4,7 @@ This project contains example codes demonstrating Go programming techniques.
 
 ## Topics
 
+* [Benchmark](./docs/benchmark.md)
 * [Concurrency](./docs/concurrent.md)
 * [Primitives](./docs/primitives.md)
 * [Networking](./docs/network.md)
