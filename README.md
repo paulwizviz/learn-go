@@ -20,7 +20,7 @@ A collection of executable examples demonstrating features of Go standard librar
 
 ## Copyright
 
-Unless specificed copyright in this project are assigned as follows.
+Unless otherwise specificed, the copyright in this project are assigned as follows.
 
 Copyright 2022 Paul Sitoh
 
