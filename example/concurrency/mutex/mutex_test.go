@@ -38,6 +38,8 @@ func Example_shareVariableNoMutex() {
 	}()
 
 	wg.Wait()
+
+	// Output:
 }
 
 func Example_shareVariableWithMutex() {
@@ -78,4 +80,6 @@ func Example_shareVariableWithMutex() {
 	}()
 
 	wg.Wait()
+
+	// Output:
 }

@@ -5,29 +5,30 @@ import (
 	"time"
 )
 
-func count(thing string, c chan string) {
-	for i := 1; i < 5; i++ {
+// This example demonstrate a go routine sending only one message.
+func Example_receiveOneMessage() {
+	c := make(chan string)
+	go func(thing string, c chan string) {
 		// This will sleep for 500 millisecond before
 		// sending message
 		time.Sleep(time.Millisecond * 500)
 		c <- thing
-	}
-}
+	}("sheep", c)
 
-func Example_receiveOneMessage() {
-	c := make(chan string)
-	go count("sheep", c)
 	timeBefore := time.Now()
 	msg := <-c
 	timeAfter := time.Now()
 	fmt.Printf("Time interval: %v Message: %s", timeAfter.Sub(timeBefore), msg)
+
+	// Output:
+	// Time interval: 500.309523ms Message: sheep
 }
 
-// This example shows routine sending
+// This example shows go routine sending
 // six messages to a channel and rountine will
 // report a deadlock error when receiving channel
-// is expecting more than six messages
-func Example_matchingSender() {
+// is expecting more than six messages.
+func Example_deadlock() {
 	c := make(chan string)
 	go func(ch chan<- string) {
 		for i := 1; i < 6; i++ {
@@ -37,6 +38,14 @@ func Example_matchingSender() {
 	for {
 		fmt.Println(<-c)
 	}
+
+	// You will not see this in this test framework. Expected output if run as an main process.
+	// hello
+	// hello
+	// hello
+	// hello
+	// hello
+	// fatal error: all goroutines are asleep - deadlock!
 
 }
 
@@ -50,7 +59,8 @@ func Example_closeChanBeforeSending() {
 	}(c)
 	close(c)
 
-	// Output:
+	// Expected output (viewable in output console)
+	// This process will panic
 }
 
 func Example_verifyClosedChannel() {
@@ -100,8 +110,8 @@ func Example_bufferedChannels() {
 	fmt.Printf("Message 2: %v\n", <-c)
 
 	// Output:
-	// Channel capacity: 0 Length: 2
-	// Channel capacity: 1 Length: 2
+	// Channel capacity: 2 Length: 0
+	// Channel capacity: 2 Length: 1
 	// Channel capacity: 2 Length: 2
 	// Message 1: Hello
 	// Message 2: World
@@ -175,4 +185,6 @@ func Example_switch() {
 			fmt.Println(msg2)
 		}
 	}
+
+	// Output:
 }

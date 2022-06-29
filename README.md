@@ -13,6 +13,11 @@ A collection of executable examples demonstrating features of Go standard librar
 * [System](./docs/system.md)
 * [Templates](./docs/templates.md)
 
+## Reference Docs
+
+* [Official Documentation](https://go.dev/doc/)
+* [Go 101](https://go101.org/article/101.html)
+
 ## Disclaimer
 
 * The packages in this project are intended for educational purpose only.
