@@ -4,5 +4,6 @@ This section discusses techniques for testing and benchmarking.
 
 ## Working examples
 
-* [Writing unit tests](../example/tests/testframework_test.go)
+* [Assertion](../example/tests/assertion/assertion_test.go)
+* [Test setup and teardown](../example/tests/setup/)
 * [Benchmarking](../example/tests/benchmark_test.go)
