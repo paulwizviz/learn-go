@@ -4,7 +4,7 @@ A collection of executable examples demonstrating features of Go standard librar
 
 ## Topics
 
-* [Benchmark](./docs/benchmark.md)
+* [Testing and Benchmarking](./docs/testing.md)
 * [Concurrency](./docs/concurrent.md)
 * [Primitives](./docs/primitives.md)
 * [Networking](./docs/network.md)
