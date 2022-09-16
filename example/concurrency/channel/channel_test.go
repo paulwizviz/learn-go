@@ -16,12 +16,15 @@ func Example_receiveOneMessage() {
 	}("sheep", c)
 
 	timeBefore := time.Now()
-	msg := <-c
+	msg := <-c // message received after 500 ms
 	timeAfter := time.Now()
-	fmt.Printf("Time interval: %v Message: %s", timeAfter.Sub(timeBefore), msg)
+	interval := time.Duration(500)
+	if interval < timeAfter.Sub(timeBefore) {
+		fmt.Printf("Message: %s", msg)
+	}
 
 	// Output:
-	// Time interval: 500.309523ms Message: sheep
+	// Message: sheep
 }
 
 // This example shows go routine sending
@@ -63,6 +66,8 @@ func Example_closeChanBeforeSending() {
 	// This process will panic
 }
 
+// This example demonstrate a way of determining if
+// a channel is closed
 func Example_verifyClosedChannel() {
 	c := make(chan string)
 	go func(ch chan<- string) {
@@ -72,24 +77,28 @@ func Example_verifyClosedChannel() {
 
 	v, ok := <-c
 	if ok {
-		fmt.Println("This is expected")
+		fmt.Printf("The channel is opened: %v\n", ok)
 		fmt.Printf("Message is: %v\n", v)
 	}
 
 	v, ok = <-c
 	if !ok {
-		fmt.Printf("Channel is already closed. Value: %v", v)
+		fmt.Printf("The channel is opened: %v\n", ok)
+		fmt.Printf("Message is: %v\n", v)
 	}
 
 	// Output:
-	// This is expected
+	//
+	// The channel is opened: true
 	// Message is: Hello
-	// Channel is already closed. Value:
+	// The channel is opened: false
+	// Message is:
 }
 
+// This example demonstrate a buffered channel
 func Example_bufferedChannels() {
 
-	c := make(chan string, 2)
+	c := make(chan string, 2) // Create a channel with two slices of strings
 	fmt.Printf("Channel capacity: %v Length: %v\n", cap(c), len(c))
 
 	c <- "Hello"
@@ -101,13 +110,14 @@ func Example_bufferedChannels() {
 	// Push if only capacity exists
 	select {
 	case c <- "Ola":
-		// This will not happen
+		// This will not happen unless you make(chan string, 3)
 	default:
 		// Do nothing
 	}
 
 	fmt.Printf("Message 1: %v\n", <-c)
 	fmt.Printf("Message 2: %v\n", <-c)
+	// fmt.Printf("Message 3: %v\n", <-c) // <-c is Ola when you make(chan string, 3)
 
 	// Output:
 	// Channel capacity: 2 Length: 0
