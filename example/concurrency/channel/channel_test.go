@@ -5,33 +5,6 @@ import (
 	"time"
 )
 
-// This example demonstrate a receiving channel blocking
-// the main process until a sending channel has sent its
-// message.
-func Example_blockingChannel() {
-	c := make(chan string)
-	go func(thing string, c chan string) {
-		// This will sleep for 500 millisecond before
-		// sending message
-		time.Sleep(time.Millisecond * 500)
-		c <- thing
-	}("sheep", c)
-
-	timeBefore := time.Now()
-	msg := <-c // process is blocked until it receive message from channel after 500ms
-
-	timeAfter := time.Now()
-	fmt.Println(timeBefore.Unix())
-	fmt.Println(timeAfter.Unix())
-	interval := time.Duration(500 * time.Millisecond)
-	if interval < timeAfter.Sub(timeBefore) {
-		fmt.Printf("Message: %s", msg)
-	}
-
-	// Output:
-	// Message: sheep
-}
-
 // This example shows go routine sending
 // five messages to a sending channel
 // and the main process expecting
