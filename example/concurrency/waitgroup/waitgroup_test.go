@@ -6,6 +6,35 @@ import (
 	"time"
 )
 
+// This example demonstrate the use of wait group
+// to co-ordinate gorountines
+func Example_waitGroup() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	// Either Goroutine 1 or Goroutine 2 can start first
+	go func() {
+		for i := 0; i < 5; i++ {
+			fmt.Printf("Goroutine 1 - %d\n", i)
+		}
+		wg.Done()
+	}()
+
+	go func() {
+		for i := 0; i < 5; i++ {
+			fmt.Printf("Goroutine 2 - %d\n", i)
+		}
+		wg.Done()
+	}()
+
+	// This will always display first before the goroutines
+	fmt.Println("Using wait group")
+
+	wg.Wait()
+
+	// Output:
+}
+
 func Example_waitForTwoSameTime() {
 	c := make(chan string)
 	var wg sync.WaitGroup

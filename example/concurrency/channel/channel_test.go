@@ -5,8 +5,10 @@ import (
 	"time"
 )
 
-// This example demonstrate a go routine sending only one message.
-func Example_receiveOneMessage() {
+// This example demonstrate a receiving channel blocking
+// the main process until a sending channel has sent its
+// message.
+func Example_blockingChannel() {
 	c := make(chan string)
 	go func(thing string, c chan string) {
 		// This will sleep for 500 millisecond before
@@ -16,9 +18,12 @@ func Example_receiveOneMessage() {
 	}("sheep", c)
 
 	timeBefore := time.Now()
-	msg := <-c // message received after 500 ms
+	msg := <-c // process is blocked until it receive message from channel after 500ms
+
 	timeAfter := time.Now()
-	interval := time.Duration(500)
+	fmt.Println(timeBefore.Unix())
+	fmt.Println(timeAfter.Unix())
+	interval := time.Duration(500 * time.Millisecond)
 	if interval < timeAfter.Sub(timeBefore) {
 		fmt.Printf("Message: %s", msg)
 	}
@@ -28,9 +33,9 @@ func Example_receiveOneMessage() {
 }
 
 // This example shows go routine sending
-// six messages to a channel and rountine will
-// report a deadlock error when receiving channel
-// is expecting more than six messages.
+// five messages to a sending channel
+// and the main process expecting
+// more than five messages
 func Example_deadlock() {
 	c := make(chan string)
 	go func(ch chan<- string) {
@@ -42,7 +47,7 @@ func Example_deadlock() {
 		fmt.Println(<-c)
 	}
 
-	// You will not see this in this test framework. Expected output if run as an main process.
+	// You will not see this in this test framework. Expected output if run as part of a main process.
 	// hello
 	// hello
 	// hello
@@ -57,13 +62,14 @@ func Example_deadlock() {
 func Example_closeChanBeforeSending() {
 	c := make(chan string)
 	go func(ch chan<- string) {
-		fmt.Println("Hello") // This will not print
+		fmt.Println("Hello world") // This will not print
 		ch <- "Hello"
 	}(c)
 	close(c)
 
-	// Expected output (viewable in output console)
-	// This process will panic
+	// You will not see output in this test framework. Expected output if run as part of a main process.
+	// Hello world
+	// panic: send on closed channel
 }
 
 // This example demonstrate a way of determining if
@@ -95,8 +101,47 @@ func Example_verifyClosedChannel() {
 	// Message is:
 }
 
+// Range over a channel to ensure that the
+// number of receiving messages matches
+// the number sending messages
+func Example_rangeChans() {
+	c := make(chan string)
+	go func(ch chan<- string) {
+		defer close(ch)
+		for i := 0; i < 3; i++ {
+			ch <- "Hello"
+		}
+	}(c)
+
+	for v := range c {
+		fmt.Println(v)
+	}
+
+	// Output:
+	// Hello
+	// Hello
+	// Hello
+}
+
+// Buffered channel sized for 2 messages
+func Example_bufferedChan() {
+	c := make(chan string, 2) // Set channel to accept to messages
+
+	go func(ch chan<- string) {
+		ch <- "Hello"
+		ch <- "world"
+	}(c)
+
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+
+	// Output:
+	// Hello
+	// world
+}
+
 // This example demonstrate a buffered channel
-func Example_bufferedChannels() {
+func Example_bufferedCha() {
 
 	c := make(chan string, 2) // Create a channel with two slices of strings
 	fmt.Printf("Channel capacity: %v Length: %v\n", cap(c), len(c))
@@ -107,12 +152,13 @@ func Example_bufferedChannels() {
 	c <- "World"
 	fmt.Printf("Channel capacity: %v Length: %v\n", cap(c), len(c))
 
-	// Push if only capacity exists
+	// // Push if only capacity exists
+	ola := "Ola"
 	select {
-	case c <- "Ola":
+	case c <- ola:
 		// This will not happen unless you make(chan string, 3)
 	default:
-		// Do nothing
+		// Do nothing if the capacity of c exceeded
 	}
 
 	fmt.Printf("Message 1: %v\n", <-c)
@@ -127,6 +173,8 @@ func Example_bufferedChannels() {
 	// Message 2: World
 }
 
+// This demonstrate receivers without
+// switching
 func Example_noSwitch() {
 	c1 := make(chan string)
 	c2 := make(chan string)
@@ -149,7 +197,7 @@ func Example_noSwitch() {
 	// so message will print the slowest
 	// first then the next available one
 	for i := 0; i < 5; i++ {
-		fmt.Println(<-c1)
+		fmt.Println(<-c1) // This is block until the sender wakes up to send
 		fmt.Println(<-c2)
 	}
 
@@ -167,7 +215,9 @@ func Example_noSwitch() {
 
 }
 
-func Example_switch() {
+// This example demonstrate the use of select
+// to switch between multiple receiving channels
+func Example_select() {
 	c1 := make(chan string)
 	c2 := make(chan string)
 
@@ -197,4 +247,15 @@ func Example_switch() {
 	}
 
 	// Output:
+	// Every 10 milliseconds
+	// Every 500 milliseconds
+	// Every 10 milliseconds
+	// Every 10 milliseconds
+	// Every 10 milliseconds
+	// Every 10 milliseconds
+	// Every 500 milliseconds
+	// Every 500 milliseconds
+	// Every 500 milliseconds
+	// Every 500 milliseconds
+
 }
