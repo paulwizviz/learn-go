@@ -7,7 +7,7 @@ However, concurrency is not the same as parallelism (see [Rob Pike](https://go.d
 
 A Go routine is a function with the keyword `go` added to function. It enable you to create a function that can run concurrently with other functions.
 
-<u>Scenario 1</u>
+<u>Example 1</u>
 
 This demonstrates a goroutine running within a main routine where the main ends before goroutine completes.
 ```
@@ -17,13 +17,17 @@ import "fmt"
 
 func main() {
 	go func() {
-		fmt.Println("Hello") // This will not print
+		fmt.Println("Hello") // This blocks the goroutine for a period of time
+							 // io operations are typically blocked
 	}()
+
+    // The main routine executes immediately after goroutine
+	// it ends before the goroutine ends killing the goroutine
 }
 ```
-[Run in playground](https://go.dev/play/p/suSAp8PWJdB)
+[working example](../example/concurrency/goroutine/ex1/main.go)
 
-<u>Scenario 2</u>
+<u>Example 2</u>
 
 This demonstrate the main routine sleeping for 100ms so the goroutine can complete its routine.
 
@@ -40,10 +44,12 @@ func main() {
 		fmt.Println("Hello, 世界")
 	}()
 
-	time.Sleep(100 * time.Millisecond)
+	time.Sleep(100 * time.Microsecond) // Get the main routine to sleep for a period of time
+	                                   // if the sleep period is longer than goroutine sleep
+									   // you will see "Hello, 世界"
 }
 ```
-[Run in playground](https://go.dev/play/p/mye4V2qkMXr)
+[Working example](../example/concurrency/goroutine/ex2/main.go)
 
 ## Channels
 
