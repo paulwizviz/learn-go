@@ -3,18 +3,17 @@
 A concurrent program is made up of code blocks that can run at the same time (see official [document](https://www.golang-book.com/books/intro/10)).
 However, concurrency is not the same as parallelism (see [Rob Pike](https://go.dev/blog/waza-talk))
 
+NOTE: To execute your working example run `go run <path to the example>`
+
 ## Goroutines
 
-A Go routine is a function with the keyword `go` added to function. It enable you to create a function that can run concurrently with other functions.
+A Go routine is a function with the keyword `go` added to a function. It enable you to create a function that can run concurrently with other functions.
 
 <u>Example 1</u>
 
 This demonstrates a goroutine running within a main routine where the main ends before goroutine completes.
-```
-package main
 
-import "fmt"
-
+```go
 func main() {
 	go func() {
 		fmt.Println("Hello") // This blocks the goroutine for a period of time
@@ -25,20 +24,13 @@ func main() {
 	// it ends before the goroutine ends killing the goroutine
 }
 ```
-[working example](../example/concurrency/goroutine/ex1/main.go)
+[working example in ../example/concurrency/goroutine/ex1/main.go](../example/concurrency/goroutine/ex1/main.go)
 
 <u>Example 2</u>
 
 This demonstrate the main routine sleeping for 100ms so the goroutine can complete its routine.
 
-```
-package main
-
-import (
-	"fmt"
-	"time"
-)
-
+```go
 func main() {
 	go func() {
 		fmt.Println("Hello, 世界")
@@ -49,24 +41,17 @@ func main() {
 									   // you will see "Hello, 世界"
 }
 ```
-[Working example](../example/concurrency/goroutine/ex2/main.go)
+[Working example in ../example/concurrency/goroutine/ex2/main.go](../example/concurrency/goroutine/ex2/main.go)
 
 ## Channels
 
-A channel provide a way for two goroutines or a main routine to communicate with each other.
+A channel provide a way goroutines to communicate with each other.
 
-<u>Scenario 1</u>
+<u>Example 1</u>
 
-This scenario demonstrates a receiving channel blocking the main routine until a message is sent via the sending channel
+This example demonstrates a receiving channel blocking the main routine until a message is sent via the sending channel.
 
-```
-   package main
-
-import (
-	"fmt"
-	"time"
-)
-
+```go
 func main(){
 	c := make(chan string)
 
@@ -85,4 +70,173 @@ func main(){
 	}
 }
 ```
-[Working example](../example/concurrency/channel/ex1/main.go)
+[Working example in ../example/concurrency/channel/ex1/main.go](../example/concurrency/channel/ex1/main.go)
+
+<u>Example 2</u>
+
+This example demonstrates a deadlock where there the receiving channel is expecting more messages than being sent.
+
+```go
+func main(){
+	c := make(chan string)
+	go func(ch chan<- string) {
+		for i := 1; i < 6; i++ { // 
+			ch <- "hello" 
+		}
+	}(c)
+	for {
+		fmt.Println(<-c) // After five incoming messagevs you get a deadlock and causing the main routine to panic
+	}
+}
+```
+[Working example in ../example/concurrency/channel/ex2/main.go](../example/concurrency/channel/ex2/main.go)
+
+<u>Example 3</u>
+
+This example demonstrates the closing of a channel before a message is sent.
+
+```go
+func main() {
+	c := make(chan string)
+	go func(ch chan<- string) {
+		fmt.Println("Hello world") // 1 - This block the goroutine
+		ch <- "Hello" // 3 - This is sent after channel is closed causing the routine to panic
+	}(c)
+	close(c) // 2 - Whilst the goroutine is block, this closes before the message hello is sent
+	time.Sleep(1 * time.Millisecond)
+}
+```
+[Working example in ../example/concurrency/channel/ex3/main.go](../example/concurrency/channel/ex3/main.go)
+
+<u>Example 4</u>
+
+This example demonstrates a technique to determine if a channel is opened or closed.
+
+```go
+func main() {
+	c := make(chan string)
+	go func(ch chan<- string) {
+		defer close(ch) // Close channel at the end of the goroutine
+		ch <- "Hello"
+	}(c)
+
+	v, opened := <-c // receive message before it is closed
+	if opened {
+		fmt.Printf("The channel is opened: %v\n", opened) // opened is true
+		fmt.Printf("Message is: %v\n", v)
+	}
+
+	v, opened = <-c
+	if !opened {
+		fmt.Printf("The channel is opened: %v\n", opened) // opened is false
+		fmt.Printf("Message is: %v\n", v)
+	}
+}
+```
+[Working example in ../example/concurrency/channel/ex4/main.go](../example/concurrency/channel/ex4/main.go)
+
+<u>Example 5</u>
+
+This example demonstrates the use of range to determined if a channel has been drained of all sending messages
+
+```go
+func main() {
+	c := make(chan string)
+	go func(ch chan<- string) {
+		defer close(ch)
+		for i := 0; i < 3; i++ {
+			ch <- "Hello"
+		}
+	}(c)
+
+	for v := range c { // This ensure the receving channel range until all messages from sender are drained
+		fmt.Println(v)
+	}
+}
+```
+[Working example in ../example/concurrency/channel/ex5/main.go](../example/concurrency/channel/ex5/main.go)
+
+<u>Example 6</u>
+
+This example demonstrate the concept of a buffered channel.
+
+```go
+func main() {
+	c := make(chan string, 2) // Create a channel with two slices of strings
+	fmt.Printf("Channel capacity: %v Length: %v\n", cap(c), len(c))
+
+	c <- "Hello"
+	fmt.Printf("Channel capacity: %v Length: %v\n", cap(c), len(c))
+
+	c <- "World"
+	fmt.Printf("Channel capacity: %v Length: %v\n", cap(c), len(c))
+
+	c <- "Hola" // Send a message to channel when its buffer is full
+	            // this will cause a deadlock as there is no receiving
+				// channel to drain the buffer.
+				// fatal error: all goroutines are asleep - deadlock!
+	fmt.Printf("Channel capacity: %v Length: %v\n", cap(c), len(c))
+
+}
+```
+[Working example in ../example/concurrency/channel/ex6/main.go](../example/concurrency/channel/ex6/main.go)
+
+<u>Example 7</u>
+
+This example demonstrates the use of select to protect data injestion into a channel when the buffer is full and there is no receiving channel
+
+```go
+func main() {
+	c := make(chan int, 2)
+	go func(ch chan int) {
+		defer close(c)
+		for i := 0; i < 10; i++ {
+			select {
+			case ch <- i:
+				fmt.Println("Pushing value: ", i)
+			default:
+				// This is called when the channel buffer is full.
+				fmt.Printf("Don't push %v to channel\n", i)
+			}
+		}
+	}(c)
+	time.Sleep(1 * time.Millisecond)
+}
+```
+[Working example in ../example/concurrency/channel/ex7/main.go](../example/concurrency/channel/ex7/main.go)
+
+<u>Example 8</u>
+
+This example demonstrates the use of select to determine the first goroutine to send a signal to the main routine.
+
+```go
+func main() {
+	c1 := make(chan string)
+	c2 := make(chan string)
+
+	go func(ch chan string) {
+		time.Sleep(10 * time.Millisecond)
+		ch <- "Sleep for 10 ms"
+	}(c1)
+
+	go func(ch chan string) {
+		time.Sleep(1 * time.Millisecond)
+		ch <- "Sleep for 1 ms"
+	}(c2)
+
+	c3 := time.After(20 * time.Millisecond) // This function returns a channel
+
+	for {
+		select {
+		case msg := <-c1: // This channel blocks the main routine for 10 ms
+			fmt.Println(msg) // This prints next
+		case msg := <-c2: // This channel blocks the main routine for 1 ms
+			fmt.Println(msg) // This prints first
+		case <-c3: // This channel blocks the main routine for 20 ms
+			fmt.Println("Timeout") // This prints last
+			return
+		}
+	}
+}
+```
+[Working example in ../example/concurrency/channel/ex8/main.go](../example/concurrency/channel/ex8/main.go)
