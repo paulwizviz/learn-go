@@ -11,7 +11,7 @@ A Go routine is a function with the keyword `go` added to a function. It enable 
 
 <u>Example 1</u>
 
-This demonstrates a goroutine running within a main routine where the main ends before goroutine completes.
+This example demonstrates a goroutine running within a main routine where the main ends before goroutine completes.
 
 ```go
 func main() {
@@ -28,7 +28,7 @@ func main() {
 
 <u>Example 2</u>
 
-This demonstrate the main routine sleeping for 100ms so the goroutine can complete its routine.
+This example demonstrates the main routine sleeping for 100ms so the goroutine can complete its routine.
 
 ```go
 func main() {
@@ -42,6 +42,31 @@ func main() {
 }
 ```
 [Working example in ../example/concurrency/goroutine/ex2/main.go](../example/concurrency/goroutine/ex2/main.go)
+
+<u>Example 3</u>
+
+This example demonstrates the use of waitgroup to manage goroutines including tearing down. In this example there are 3 goroutines (main routine included).
+
+```go
+func main() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	go func() {
+		fmt.Println("Goroutine 1")
+		wg.Done() // decrement count
+	}()
+
+	go func() {
+		fmt.Println("Goroutine 2")
+		wg.Done() // decrement count
+	}()
+	fmt.Println("Number of Goroutine before wait: ", runtime.NumGoroutine()) // This will report 3 goroutines (main is also a goroutine)
+	wg.Wait() // Cause the main routine to pause until all routine is done
+	fmt.Println("Number of Goroutine after wait: ", runtime.NumGoroutine()) // This will report 1 goroutine (main routine)
+}
+```
+[Working example in ../example/concurrency/goroutine/ex3/main.go](../example/concurrency/goroutine/ex3/main.go)
 
 ## Channels
 
