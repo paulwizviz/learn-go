@@ -68,6 +68,89 @@ func main() {
 ```
 [Working example in ../example/concurrency/goroutine/ex3/main.go](../example/concurrency/goroutine/ex3/main.go)
 
+<u>Example 4</u>
+
+This examples demonstrates the use of mutex to synchronize shared variables across goroutines. Without mutex the shared variables might be updated in the wrong sequence. For example it might look like this:
+
+```
+Initial shared value: 0
+ -- 
+2 Before decrement: 0
+1 Before increment: 0
+2 After decrement: -1
+ --- 
+1 After increment: 0
+ --- 
+1 Before increment: 0
+1 After increment: 1
+ --- 
+2 Before decrement: 1
+2 After decrement: 0
+ --- 
+```
+
+```go
+func main() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	var mutext *sync.Mutex = &sync.Mutex{}
+
+	var value = 0
+	fmt.Printf("Initial shared value: %v\n -- \n", value)
+
+	go func() {
+		for i := 0; i < 2; i++ {
+			time.Sleep(10 * time.Millisecond)
+			func() {
+				mutext.Lock() // If another gorountine holds the lock this will wait until holder release it hence blocking the completion of the goroutine
+				fmt.Printf("1 Before increment: %v\n", value)
+				value = value + 1
+				fmt.Printf("1 After increment: %v\n --- \n", value)
+				mutext.Unlock() 
+			}()
+		}
+		wg.Done()
+	}()
+
+	go func() {
+		for i := 0; i < 2; i++ {
+			time.Sleep(10 * time.Millisecond)
+			func() {
+				mutext.Lock() // 
+				fmt.Printf("2 Before decrement: %v\n", value)
+				value = value - 1
+				fmt.Printf("2 After decrement: %v\n --- \n", value)
+				mutext.Unlock()
+			}()
+		}
+		wg.Done()
+	}()
+
+	wg.Wait()
+}
+```
+
+Mutex locking ensure that the shared variable is updated in the correct sequence:
+
+```
+Initial shared value: 0
+ -- 
+1 Before increment: 0
+1 After increment: 1
+ --- 
+2 Before decrement: 1
+2 After decrement: 0
+ --- 
+2 Before decrement: 0
+2 After decrement: -1
+ --- 
+1 Before increment: -1
+1 After increment: 0
+ --- 
+```
+
+
 ## Channels
 
 A channel provide a way goroutines to communicate with each other.
