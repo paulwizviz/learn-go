@@ -153,11 +153,14 @@ Initial shared value: 0
 
 ## Channels
 
-A channel provide a way goroutines to communicate with each other.
+A channel provide a way goroutines to communicate with each other. There are two types of channels:
+
+* <b>Unbuffered channel</u> -- this type of channel requires a receiving channel to be available when a message is emitted from a sending channel.
+* <b>Buffered channel</u> -- For this type of channel, sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.
 
 <u>Example 1</u>
 
-This example demonstrates a receiving channel blocking the main routine until a message is sent via the sending channel.
+This example demonstrates the operation of an unbuffered channel where the receiving channel is blocked until a message is emitted from the emitting channel.
 
 ```go
 func main(){
@@ -348,3 +351,11 @@ func main() {
 }
 ```
 [Working example in ../example/concurrency/channel/ex8/main.go](../example/concurrency/channel/ex8/main.go)
+
+## Concurrency Patterns
+
+<u>Worker pool pattern</u>
+
+A worker pool pattern using a combination of goroutine and channel.
+
+This [working example](../example/concurrency/worker/main.go) demonstrates the use of worker pool to build a fibonance sequence for a range of index using workers. To run the example, execute: `go run example/concurrency/worker/main.go -seq=<sequence of fibonance> -workers=<number of workers>`.
