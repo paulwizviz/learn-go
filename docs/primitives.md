@@ -10,3 +10,7 @@ This section discusses primitive types and operations.
 * [Maps](../example/primitives/maps/maps_test.go)
 * [Slices](../example/primitives/slices/)
 * [Pointers vs values](../example/primitives/variable/variable_test.go)
+
+## Useful references
+
+* [Understanding Allocations: the Stack and the Heap - GopherCon SG 2019](https://www.youtube.com/watch?v=ZMZpH4yT7M0)
