@@ -10,7 +10,7 @@ A collection of executable examples demonstrating features of Go standard librar
 * [Defer and panic](./docs/panic.md)
 * [Idiomatic Go - coding conventions according to Go philosophy](./docs/idiomatic.md)
 * [Serialization](./docs/serialization.md)
-* [Structured datatypes](./docs/structs.md)
+* [User defined types](./docs/types.md)
 * [System](./docs/system.md)
 * [Templates](./docs/templates.md)
 * [Testing and Benchmarking](./docs/testing.md)
