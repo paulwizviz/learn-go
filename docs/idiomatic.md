@@ -20,3 +20,4 @@ The principles behind Idiomatic Go is also encapulated in the [Rob Pike's Go Pro
     * [5 Tips for Writing Idiomatic Code in Golang - Part 2](https://www.youtube.com/watch?v=lfQ4qLcE3Bo)
     * [5 Tips for Writing Idiomatic Code in Golang - Part 3](https://www.youtube.com/watch?v=qCg-FIkcJZw)
 * [Package naming recommendation](https://go.dev/blog/package-names)
+* [Writing Beautiful Packages in Go](https://www.youtube.com/watch?v=cmkKxNN7cs4)
