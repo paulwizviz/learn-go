@@ -37,3 +37,7 @@ This example use a custom proxy. To see the example in action, follow these step
   * STEP 2: Run the command `go run example/network/proxy/custom/main.go` to start the proxy server (port 3030).
   * STEP 3: Use a client (curl, browser, etc) and target the proxy server (http://localhost:3030).
 
+## Implementation patterns
+
+[GopherCon 2018: Filippo Valsorda- Asynchronous Networking Patterns](https://www.youtube.com/watch?v=afSiVelXDTQ)
+
