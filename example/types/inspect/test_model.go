@@ -43,7 +43,7 @@ func ExtractStructMeta(data interface{}) (StructMeta, error) {
 
 	value := reflect.Indirect(reflect.ValueOf(data))
 	if value.Kind() != reflect.Struct {
-		return nil, fmt.Errorf("Not struct")
+		return nil, fmt.Errorf("not struct")
 	}
 
 	strutName := value.Type().String()
