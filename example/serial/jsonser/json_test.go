@@ -1,89 +1,19 @@
-package jsonser
+package jsonser_test
 
 import (
 	"encoding/json"
 	"fmt"
 	"time"
+
+	"github.com/paulwizviz/learn-go/example/serial/jsonser"
 )
-
-// Model
-type task struct {
-	ID      int64     `json:"id"`
-	Name    string    `json:"name"`
-	Created time.Time `json:"created"` // Marshal this to int (Day) only
-}
-
-func (t *task) MarshalJSON() ([]byte, error) {
-	type Alias task
-	return json.Marshal(&struct {
-		*Alias
-		Created int64 `json:"created"` // Changing created from time.Time to Unix time
-	}{
-		Alias:   (*Alias)(t),
-		Created: t.Created.Unix(),
-	})
-}
-
-func (t *task) UnmarshalJSON(data []byte) error {
-	type Alias task
-	aux := &struct {
-		*Alias
-		Created int64 `json:"created"`
-	}{
-		Alias: (*Alias)(t),
-	}
-	err := json.Unmarshal(data, &aux)
-	if err != nil {
-		return err
-	}
-	t.Created = time.Unix(aux.Created, 0)
-	return nil
-}
-
-type project interface {
-	Identifier() string
-}
-
-type defaultProject struct {
-	ID string `json:"id"`
-}
-
-func NewProject(id string) project {
-	return &defaultProject{
-		ID: id,
-	}
-}
-
-func (d *defaultProject) Identifier() string {
-	return d.ID
-}
-
-func (d *defaultProject) MarshalJSON() ([]byte, error) {
-	return json.Marshal(&struct {
-		ID string `json:"id"`
-	}{
-		ID: d.ID,
-	})
-}
-
-func (d *defaultProject) UnmarshalJSON(data []byte) error {
-	var alt struct {
-		ID string `json:"id"`
-	}
-	err := json.Unmarshal(data, &alt)
-	if err != nil {
-		return err
-	}
-	d.ID = alt.ID
-	return nil
-}
 
 // Examples
 func Example_marshalTask() {
 
 	tm, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
 
-	tsk := &task{
+	tsk := &jsonser.Task{
 		ID:      1,
 		Name:    "hello",
 		Created: tm,
@@ -98,7 +28,7 @@ func Example_marshalTask() {
 
 func Example_unmarshalTask() {
 	s := `{"id":1,"name":"hello","created":1650297458}`
-	var actual task
+	var actual Task
 	json.Unmarshal([]byte(s), &actual)
 	fmt.Printf("Marshalled: %v Unmarshalled: %v", s, actual)
 
@@ -107,7 +37,7 @@ func Example_unmarshalTask() {
 }
 
 func Example_marshalProject() {
-	p := NewProject("hello")
+	p := jsonser.NewProject("hello")
 	d, _ := json.Marshal(p)
 	fmt.Println(string(d))
 
@@ -116,7 +46,7 @@ func Example_marshalProject() {
 }
 
 func Example_unmarshalProject() {
-	p := NewProject("")
+	p := jsonser.NewProject("")
 	// var p project -- It is not possible to unmarshal to p here
 	err := json.Unmarshal([]byte(`{"id":"hello"}`), &p)
 	fmt.Println(p, err)
