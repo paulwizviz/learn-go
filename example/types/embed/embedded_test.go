@@ -1,35 +1,27 @@
-package embed
+package embed_test
 
 import (
 	"fmt"
+
+	"github.com/paulwizviz/learn-go/example/types/embed"
 )
-
-type simpleStruct struct {
-	ID   int64
-	Name string
-}
-
-type embeddedStruct struct {
-	simpleStruct
-	name string
-}
 
 func Example_embeddedStruct() {
 
-	e1 := embeddedStruct{
-		simpleStruct{
+	e1 := embed.CompoundStruct{
+		embed.SimpleStruct{
 			ID:   123,
 			Name: "Embedded",
 		},
 		"folks",
 	}
 
-	e2 := embeddedStruct{
-		simpleStruct: simpleStruct{
+	e2 := embed.CompoundStruct{
+		SimpleStruct: embed.SimpleStruct{
 			ID:   234,
 			Name: "Embedded struct",
 		},
-		name: "Hello",
+		Name: "Hello",
 	}
 
 	fmt.Println(e1)

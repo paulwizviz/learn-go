@@ -30,7 +30,7 @@ func Example_partialImpl() {
 }
 
 // A service to trace locations of moveable thing
-func TraceMovement(item, from, to string, mf interf.MoveableHandler) {
+func TraceMovement(item, from, to string, mf interf.Moveable) {
 	fmt.Print(item)
 	mf.Move(from, to)
 }

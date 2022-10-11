@@ -28,7 +28,7 @@ func Example_marshalTask() {
 
 func Example_unmarshalTask() {
 	s := `{"id":1,"name":"hello","created":1650297458}`
-	var actual Task
+	var actual jsonser.Task
 	json.Unmarshal([]byte(s), &actual)
 	fmt.Printf("Marshalled: %v Unmarshalled: %v", s, actual)
 
