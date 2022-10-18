@@ -35,3 +35,40 @@ func Example_deferNoErr() {
 	// Hello
 	// World
 }
+
+func errorCalled() error {
+	defer fmt.Println("world")
+	if true {
+		fmt.Println("Error occured")
+		return fmt.Errorf("error happens")
+	}
+	return nil
+}
+
+func noErrorCalled() error {
+	defer fmt.Println("world")
+	if false {
+		fmt.Println("Error occured")
+		return fmt.Errorf("error happens")
+	}
+	return nil
+}
+
+func Example_deferCalledAfterEtn() {
+	err := errorCalled()
+	fmt.Println(err)
+
+	fmt.Println("---")
+
+	err = noErrorCalled()
+	fmt.Println(err)
+
+	// Output:
+	// Error occured
+	// world
+	// error happens
+	// ---
+	// world
+	// <nil>
+
+}
