@@ -7,7 +7,7 @@ A collection of executable examples demonstrating features of Go standard librar
 * [Concurrency](./docs/concurrent.md)
 * [Primitives](./docs/primitives.md)
 * [Networking](./docs/network.md)
-* [Defer and panic](./docs/panic.md)
+* [Error and panic](./docs/error.md)
 * [Idiomatic Go - coding conventions according to Go philosophy](./docs/idiomatic.md)
 * [Serialization](./docs/serialization.md)
 * [User defined types](./docs/types.md)
