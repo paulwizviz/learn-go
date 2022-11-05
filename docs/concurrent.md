@@ -3,7 +3,16 @@
 A concurrent program is made up of code blocks that can run at the same time (see official [document](https://www.golang-book.com/books/intro/10)).
 However, concurrency is not the same as parallelism (see [Rob Pike](https://go.dev/blog/waza-talk))
 
-NOTE: To execute your working example run `go run <path to the example>`
+You will find a few working examples in this section. To execute your working example run `go run <path to the example>`
+
+## Concepts
+
+Matt Kodvb
+
+* [Go Class: 22 What is Concurrency?](https://www.youtube.com/watch?v=A3R-4ZYBqvE&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+* [Go Class: 23 CSP, Goroutines, and Channels](https://www.youtube.com/watch?v=zJd7Dvg3XCk&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+* [Go Class: 24 Select](https://www.youtube.com/watch?v=tG7gII0Ax0Q&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+* [Go Class: 26 Channels in Detail](https://www.youtube.com/watch?v=fCkxKGd6CVQ&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
 
 ## Goroutines
 
