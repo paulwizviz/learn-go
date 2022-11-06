@@ -5,6 +5,7 @@ A collection of executable examples demonstrating features of Go standard librar
 ## Topics
 
 * [Concurrency](./docs/concurrent.md)
+* [Context](./docs/context.md)
 * [Design Patterns](./docs/patterns.md)
 * [Error and panic](./docs/error.md)
 * [Idiomatic Go - coding conventions according to Go philosophy](./docs/idiomatic.md)

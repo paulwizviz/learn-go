@@ -12,9 +12,9 @@ func main() {
 	ctx, cancel := context.WithCancel(ctx)
 
 	go func() {
-		log.Println("Wait for cancellation ...")
+		log.Println("Waiting for cancellation ...")
 		<-ctx.Done()
-		log.Fatal("Cancelled")
+		log.Fatalf("Cancelled")
 	}()
 
 	for {
