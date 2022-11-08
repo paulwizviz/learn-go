@@ -17,10 +17,11 @@ A collection of executable examples demonstrating features of Go standard librar
 * [Testing and Benchmarking](./docs/testing.md)
 * [User defined types](./docs/types.md)
 
-## Reference Docs
+## Concepts
 
 * [Official Documentation](https://go.dev/doc/)
 * [Go 101](https://go101.org/article/101.html)
+* [Understanding Allocations: the Stack and the Heap - GopherCon SG 2019](https://www.youtube.com/watch?v=ZMZpH4yT7M0)
 
 ## Disclaimer
 
