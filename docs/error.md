@@ -2,12 +2,6 @@
 
 This section illustrates techniques for handling errors and panic.
 
-## Defer
-
-A defer function in a surrounding function is called just before the surrounding function returns.
-
-Here are [working examples demonstrating defer functions](../example/error/deferops/deferops_test.go)
-
 ## Panic and recover
 
 The pattern to recover from panic is:
