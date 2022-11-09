@@ -15,7 +15,7 @@ A collection of executable examples demonstrating features of Go standard librar
 * [System](./docs/system.md)
 * [Templates](./docs/templates.md)
 * [Testing and Benchmarking](./docs/testing.md)
-* [User defined types](./docs/types.md)
+* [User defined types and object-orientation](./docs/types.md)
 
 ## Concepts
 
