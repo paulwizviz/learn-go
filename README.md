@@ -6,12 +6,12 @@ A collection of executable examples demonstrating features of Go standard librar
 
 * [Concurrency](./docs/concurrent.md)
 * [Context](./docs/context.md)
-* [Design Patterns](./docs/patterns.md)
 * [Error and panic](./docs/error.md)
 * [Idiomatic Go - coding conventions according to Go philosophy](./docs/idiomatic.md)
 * [Networking](./docs/network.md)
 * [Primitives](./docs/primitives.md)
 * [Serialization](./docs/serialization.md)
+* [Summary examples](./docs/summary.md)
 * [System](./docs/system.md)
 * [Templates](./docs/templates.md)
 * [Testing and Benchmarking](./docs/testing.md)
