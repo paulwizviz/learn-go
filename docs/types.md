@@ -14,6 +14,8 @@ Working xxamples demonstrating the various implementations are found here [./exa
 
 You can embed a struct within a struct. Here is a [working example]()
 
+* [Methods](https://go101.org/article/method.html)
+
 ## Inspection
 
 * Source
