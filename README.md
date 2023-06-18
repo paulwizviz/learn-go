@@ -4,18 +4,17 @@ A collection of executable examples demonstrating features of Go standard librar
 
 ## Topics
 
-* [Concurrency](./docs/concurrent.md)
-* [Context](./docs/context.md)
-* [Error and panic](./docs/error.md)
-* [Idiomatic Go - coding conventions according to Go philosophy](./docs/idiomatic.md)
-* [Networking](./docs/network.md)
-* [Primitives](./docs/primitives.md)
-* [Serialization](./docs/serialization.md)
-* [Summary examples](./docs/summary.md)
-* [System](./docs/system.md)
-* [Templates](./docs/templates.md)
-* [Testing and Benchmarking](./docs/testing.md)
-* [User defined types and object-orientation](./docs/types.md)
+* [Concurrency](./concurrency/doc/concurrent.md)
+* [Context](./context/doc/context.md)
+* [Error and panic](./error/doc/error.md)
+* [Idiomatic Go - coding conventions according to Go philosophy](./idiomatic/idiomatic.md)
+* [Networking](./networking/doc/network.md)
+* [Primitives](./primitives/doc/primitives.md)
+* [Serialization](./serialization/doc/serialization.md)
+* [System](./system/doc/system.md)
+* [Templates](./templates/doc/templates.md)
+* [Testing and Benchmarking](./tests/doc/testing.md)
+* [User defined types and object-orientation](./types/doc/types.md)
 
 ## Concepts
 
