@@ -3,7 +3,7 @@ package slices_test
 import (
 	"fmt"
 
-	"github.com/paulwizviz/learn-go/example/primitives/slices"
+	"github.com/paulwizviz/learn-go/primitives/examples/slices"
 )
 
 func Example_slice() {

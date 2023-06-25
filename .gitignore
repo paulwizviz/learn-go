@@ -1,4 +1,4 @@
 .DS_Store
 
-example/inifile/test.output.ini
 temp/
+tests/examples/fuzz/ex1/testdata/

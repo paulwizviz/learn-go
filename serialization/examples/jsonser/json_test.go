@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/paulwizviz/learn-go/example/serial/jsonser"
+	"github.com/paulwizviz/learn-go/serialization/examples/jsonser"
 )
 
 // Examples

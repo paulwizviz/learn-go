@@ -1,4 +1,4 @@
-package setup
+package ex2
 
 import (
 	"log"
@@ -30,10 +30,11 @@ func (d dbService) State() string {
 
 var databaseService = dbService{}
 
+// This is the first entry point when you run go test.
 func TestMain(m *testing.M) {
 	log.Println("Setup test")
 	exitVal := m.Run()
-	log.Println("End test")
+	log.Println("End of setup test")
 	os.Exit(exitVal)
 }
 

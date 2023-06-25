@@ -13,7 +13,7 @@ A collection of executable examples demonstrating features of Go standard librar
 * [Serialization](./serialization/doc/serialization.md)
 * [System](./system/doc/system.md)
 * [Templates](./templates/doc/templates.md)
-* [Testing and Benchmarking](./tests/doc/testing.md)
+* [Tests](./tests//doc/tests.md)
 * [User defined types and object-orientation](./types/doc/types.md)
 
 ## Concepts
