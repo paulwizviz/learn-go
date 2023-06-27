@@ -37,3 +37,7 @@ In programming and software development, fuzzing or fuzz testing is an automated
 
 * [GopherCon 2022: Katie Hockman - Fuzz Testing Made Easy](https://www.youtube.com/watch?v=7KWPiRq3ZYI)
 
+<u>Working example</u>
+
+* Fuzzing to test for panic working example [here](../examples/fuzz/ex1/)
+
