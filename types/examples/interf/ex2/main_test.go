@@ -24,9 +24,12 @@ func TrackMovementOf(item, from, to string, m Tracker) {
 
 }
 
-func main() {
+func Example() {
 	var tracker TrackerFunc = func(from, to string) {
 		fmt.Printf("traveling from: %s to %s", from, to)
 	}
 	TrackMovementOf("John", "a", "b", tracker)
+
+	// output:
+	// John traveling from: a to b
 }

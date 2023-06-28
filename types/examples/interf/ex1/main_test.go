@@ -65,7 +65,7 @@ func NewMammalDog() Mammal {
 	}
 }
 
-func main() {
+func Example() {
 	human := NewMammalHuman()
 	dog := NewMammalDog()
 
@@ -76,4 +76,8 @@ func main() {
 	for _, m := range mammals {
 		fmt.Printf("Type: %T, Name: %s\n", m, m.Name())
 	}
+
+	// output:
+	// Type: *main.human, Name: John
+	// Type: *main.dog, Name: Skippy
 }
