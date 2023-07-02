@@ -39,10 +39,4 @@ An interface with only one method signature, can be implemented by a struct with
 Here is a [working](../examples/interf/ex2/main.go).
 
 
-## Inspection
 
-<u>Source</u>
-    * [The Laws of Reflection](https://go.dev/blog/laws-of-reflection)
-
-<u>Working examples</u>
-    * [inspect_test.go](../examples/inspect/inspect_test.go)

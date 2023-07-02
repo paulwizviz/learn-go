@@ -1,7 +1,6 @@
-package inspect
+package main
 
-// Model
-type IPerson interface{}
+type Human interface{}
 
 type Person struct {
 	FirstName string `json:"firstname" c:"first_name"`
@@ -19,5 +18,3 @@ type PersonAddress struct {
 	Address
 	Landsize int
 }
-
-func fname() {}

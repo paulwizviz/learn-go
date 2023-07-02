@@ -10,6 +10,7 @@ A collection of executable examples demonstrating features of Go standard librar
 * [Idiomatic Go - coding conventions according to Go philosophy](./idiomatic/idiomatic.md)
 * [Networking](./networking/doc/network.md)
 * [Primitives](./primitives/doc/primitives.md)
+* [Reflection](./reflection/doc/reflection.md)
 * [Serialization](./serialization/doc/serialization.md)
 * [System](./system/doc/system.md)
 * [Templates](./templates/doc/templates.md)
