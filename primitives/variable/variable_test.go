@@ -2,6 +2,18 @@ package variable_test
 
 import "fmt"
 
+func Example_bool() {
+
+	var b bool = false
+
+	fmt.Printf("Bool %v\n", b)
+	fmt.Printf("Bool %t", b)
+
+	// Output:
+	// Bool false
+	// Bool false
+}
+
 func Example_variables() {
 
 	const cnum int = 10

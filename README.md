@@ -2,6 +2,33 @@
 
 A collection of executable examples demonstrating features of Go standard libraries.
 
+## Quick Tour
+
+## Primitive Types
+
+* [bool, integer, float & complex]
+* [Bits, Octal, Hex, and Bytes literals](./primitives/bits/README.md)
+* [string and rune]
+* [Functions and arguments] 
+
+## Interfaces and User Defined Types
+
+## Error Handling
+
+## Organising Go project
+
+## Concurrency
+
+## Testing
+
+## Toolchains
+
+## Systems programming
+
+* [Reflection]
+* [Signals]
+* [Templates]
+
 ## Topics
 
 * [Concurrency](./concurrency/doc/concurrent.md)
