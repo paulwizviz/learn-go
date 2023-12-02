@@ -35,3 +35,5 @@ A string literal represents a string constant obtained from concatenating a sequ
 A string is a slice of bytes
 
 Raw string are characters sequence in back quotes example \`raw string\`. Interpreted string literals are character sequences between double quotes, as in "bar" 
+
+Please refer to this to understand the internals of [Strings, Bytes and Runes | Golang | intermediate level](https://www.youtube.com/watch?v=fVbI_3v0Zys&list=PLSozy2hb5kKPpIJnpZ2sSMfjVjP0tyJYG&index=2)
