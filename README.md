@@ -8,7 +8,7 @@ A collection of executable examples demonstrating features of Go standard librar
 
 * [integer](./primitives/doc/integer.md)
 * [float](./primitives/doc/float.md)
-* [string and rune]
+* [string and rune](./primitives/doc/string.md)
 * [Functions and arguments] 
 
 ## Interfaces and User Defined Types
