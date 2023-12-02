@@ -1,74 +1,6 @@
-package bit
+package integer
 
 import "fmt"
-
-func Example_binary() {
-	binaryOne := 0b001
-	binaryTwo := 0b010
-
-	fmt.Printf("bits - One: %b Two: %b\n", binaryOne, binaryTwo)
-	fmt.Printf("3 bits - One: %03b Two: %03b\n", binaryOne, binaryTwo)
-	fmt.Printf("8 bits - One: %08b Two: %08b\n", binaryOne, binaryTwo)
-	fmt.Printf("Decimal - One: %v Two: %v\n", binaryOne, binaryTwo)
-
-	// Output:
-	// bits - One: 1 Two: 10
-	// 3 bits - One: 001 Two: 010
-	// 8 bits - One: 00000001 Two: 00000010
-	// Decimal - One: 1 Two: 2
-}
-
-func Example_octal() {
-	octal0 := 00
-	octal1 := 01
-	octal2 := 02
-	octal3 := 03
-	octal4 := 04
-	octal5 := 05
-	octal6 := 06
-	octal7 := 07
-	octal10 := 010
-
-	fmt.Printf("Octal0 %v\n", octal0)
-	fmt.Printf("Octal1 %v\n", octal1)
-	fmt.Printf("Octal2 %v\n", octal2)
-	fmt.Printf("Octal3 %v\n", octal3)
-	fmt.Printf("Octal4 %v\n", octal4)
-	fmt.Printf("Octal5 %v\n", octal5)
-	fmt.Printf("Octal6 %v\n", octal6)
-	fmt.Printf("Octal7 %v\n", octal7)
-	fmt.Printf("Octal10 %v\n", octal10)
-
-	fmt.Printf("Octal0 Literal %0o\n", octal0)
-	fmt.Printf("Octal1 Literal %0o\n", octal1)
-	fmt.Printf("Octal2 Literal %0o\n", octal2)
-	fmt.Printf("Octal3 Literal %0o\n", octal3)
-	fmt.Printf("Octal4 Literal %0o\n", octal4)
-	fmt.Printf("Octal5 Literal %0o\n", octal5)
-	fmt.Printf("Octal6 Literal %0o\n", octal6)
-	fmt.Printf("Octal7 Literal %0o\n", octal7)
-	fmt.Printf("Octal10 Literal %0o", octal10)
-
-	// Output:
-	// Octal0 0
-	// Octal1 1
-	// Octal2 2
-	// Octal3 3
-	// Octal4 4
-	// Octal5 5
-	// Octal6 6
-	// Octal7 7
-	// Octal10 8
-	// Octal0 Literal 0
-	// Octal1 Literal 1
-	// Octal2 Literal 2
-	// Octal3 Literal 3
-	// Octal4 Literal 4
-	// Octal5 Literal 5
-	// Octal6 Literal 6
-	// Octal7 Literal 7
-	// Octal10 Literal 10
-}
 
 func Example_hex() {
 
@@ -160,27 +92,17 @@ func Example_hex() {
 	// Hex0F in string F
 }
 
-func Example_bytes() {
+func Example_hexint() {
+	var hex1 uint8 = 0xFF
+	var hex2 int8 = 0x7E
+	var hex3 int8 = -0x80
 
-	byte1 := byte(1)
-	byte2 := byte(2)
-	byte100 := byte(100)
-	byte255 := byte(255)
-	// byte := byte(256) is out of range
-
-	fmt.Printf("byte1 %v\n", byte1)
-	fmt.Printf("byte2 %v\n", byte2)
-	fmt.Printf("byte100 %v\n", byte100)
-
-	fmt.Printf("byte1 in binary %08b\n", byte1)
-	fmt.Printf("byte2 in binary %08b\n", byte2)
-	fmt.Printf("byte255 in binary %v\n", byte255)
+	fmt.Printf("Max uint8 Hex: %X Decimal: %d\n", hex1, hex1)
+	fmt.Printf("Max int8 Hex: %X Decimal: %d\n", hex2, hex2)
+	fmt.Printf("Min int8 Hex: %X Decimal: %d\n", hex3, hex3)
 
 	// Output:
-	// byte1 1
-	// byte2 2
-	// byte100 100
-	// byte1 in binary 00000001
-	// byte2 in binary 00000010
-	// byte255 in binary 255
+	// Max uint8 Hex: FF Decimal: 255
+	// Max int8 Hex: 7E Decimal: 126
+	// Min int8 Hex: -80 Decimal: -128
 }

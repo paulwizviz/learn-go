@@ -6,8 +6,8 @@ A collection of executable examples demonstrating features of Go standard librar
 
 ## Primitive Types
 
-* [bool, integer, float & complex]
-* [Bits, Octal, Hex, and Bytes literals](./primitives/bits/README.md)
+* [integer](./primitives/doc/integer.md)
+* [float](./primitives/doc/float.md)
 * [string and rune]
 * [Functions and arguments] 
 
