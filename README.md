@@ -2,49 +2,40 @@
 
 A collection of executable examples demonstrating features of Go standard libraries.
 
-## Quick Tour
-
-## Primitive Types
-
-* [integer](./primitives/doc/integer.md)
-* [float](./primitives/doc/float.md)
-* [string and rune](./primitives/doc/string.md)
-* [Functions and arguments] 
-
-## Interfaces and User Defined Types
-
-## Error Handling
-
-## Organising Go project
-
-## Concurrency
-
-## Testing
-
-## Toolchains
-
-## Systems programming
-
-* [Reflection]
-* [Signals]
-* [Templates]
-
 ## Topics
+* Program Structure
+    * [Package, Module and Project Layout](./module/doc.md)
+    * [Idiomatic Go](./idiomatic/idiomatic.md)
+* Basic Types
+    * Boolean - type `bool` (`true` or `false`)
+    * [Float](./floattype/doc.md)
+    * [Integer](./integer/doc.md)
+    * [Iota](./iota/doc.md)
+    * [Strings and Rune](./str/doc.md)
+* Composite Types
+    * [Array and Slices](./slices/doc.md)
+    * [Map](./maps/doc.md)
+    * [Struct](./struct/doc.md)
+* [Concurrency](./concurrency/doc.md)
+* [Error Handling](./error/doc.md)
+* [Functions](./funcs/doc.md)
+* [Generics](./generics/doc.md)
+* [Interfaces](./interf/doc.md)
+* Standard libraries
+    * [Context](./context/doc.md)
+    * [Reflection](./reflection/doc.md)
+    * [Testing](./tests/doc.md)
+    * [Template](./templates/doc.md)
 
-* [Concurrency](./concurrency/doc/concurrent.md)
-* [Context](./context/doc/context.md)
-* [Error and panic](./error/doc/error.md)
-* [Idiomatic Go - coding conventions according to Go philosophy](./idiomatic/idiomatic.md)
-* [Networking](./networking/doc/network.md)
-* [Primitives](./primitives/doc/primitives.md)
-* [Reflection](./reflection/doc/reflection.md)
-* [Serialization](./serialization/doc/serialization.md)
-* [System](./system/doc/system.md)
-* [Templates](./templates/doc/templates.md)
-* [Tests](./tests//doc/tests.md)
-* [User defined types and object-orientation](./types/doc/types.md)
+## Working projects
 
-## Concepts
+The following are my example projects:
+
+* [Go Web](https://github.com/paulwizviz/go-web)
+* [Lottery stat](https://github.com/paulwizviz/lotterystat)
+* [Data Lake](https://github.com/paulwizviz/datalake)
+
+## References
 
 * [Official Documentation](https://go.dev/doc/)
 * [Go 101](https://go101.org/article/101.html)
@@ -65,3 +56,4 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 
 http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
