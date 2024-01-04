@@ -1,6 +1,6 @@
 # Overview
 
-A collection of executable examples demonstrating features of Go standard libraries.
+My brain dump on topics about core features of Go.
 
 ## Topics
 * Program Structure
