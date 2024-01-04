@@ -22,6 +22,7 @@ A collection of executable examples demonstrating features of Go standard librar
 * [Generics](./generics/doc.md)
 * [Interfaces](./interf/doc.md)
 * Standard libraries
+    * [Encoding](./encoding/doc.md)
     * [Context](./context/doc.md)
     * [Reflection](./reflection/doc.md)
     * [Testing](./tests/doc.md)
