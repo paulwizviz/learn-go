@@ -52,7 +52,7 @@ func TestFizzBuzz(t *testing.T) {
 		},
 	}
 	for i, tc := range testcases {
-		actual := fizbuz(tc.input)
+		actual := fizzbuzz(tc.input)
 		if tc.expected != actual {
 			t.Fatalf("Case: %v - %v %v", i, tc.description, actual)
 		}

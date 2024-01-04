@@ -2,7 +2,7 @@ package ex1
 
 import "fmt"
 
-func fizbuz(input uint) string {
+func fizzbuzz(input uint) string {
 
 	if input == 0 {
 		return "0"
