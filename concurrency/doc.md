@@ -65,7 +65,11 @@ Waitgroups are elements that are used to manage goroutines which includes operat
 
 Please refer to these [working examples](./waitgroup/main.go).
 
-## Useful References
+## Concurrency patterns
+
+Please refer to [GitHub repository for examples](https://github.com/paulwizviz/go-concurrency.git)
+
+## References
 
 * Matt Kodvb
     * [Go Class: 22 What is Concurrency?](https://www.youtube.com/watch?v=A3R-4ZYBqvE&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
