@@ -13,7 +13,7 @@ func main() {
 
 	go func() {
 		log.Println("Waiting for cancellation ...")
-		<-ctx.Done()
+		<-ctx.Done() // Blocks this Go routine until cancel() is called
 		log.Fatalf("Cancelled")
 	}()
 
