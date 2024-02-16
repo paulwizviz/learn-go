@@ -22,8 +22,9 @@ My brain dump on topics about core features of Go.
 * [Generics](./generics/doc.md)
 * [Interfaces](./interf/doc.md)
 * Standard libraries
-    * [Encoding](./encoding/doc.md)
     * [Context](./context/doc.md)
+    * [Encoding](./encoding/doc.md)
+    * [Networking](./networking/doc.md)
     * [Reflection](./reflection/doc.md)
     * [Testing](./tests/doc.md)
     * [Template](./templates/doc.md)

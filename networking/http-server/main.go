@@ -33,6 +33,6 @@ func main() {
 		res.WriteHeader(http.StatusOK)
 		res.Write([]byte("ola"))
 	})
-
+	log.Print("Starting webserver on 3030")
 	log.Fatal(http.ListenAndServe(":3030", nil))
 }
