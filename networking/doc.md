@@ -1,17 +1,17 @@
 # Networking
 
-This section illutrates the use standard library to build aspect of networking component.
+This section illutrates the use standard library to build basic aspect of networking component.
 
-## Working Examples
+For advanced networking patterns, please refer to [my other github repositories](https://github.com/paulwizviz/go-networking).
 
-<u>TCP and Unix Socket programming</u>
+## TCP and Unix Socket programming
 
 These examples demonstrate the use of standard library `net` package.
 
 * [Auto assigning port](./auto-assign-port/main.go) - this demonstrates technique to auto assign a port.
 * [Unix socket programming](./unix-socket/) - this demonstrates client server via unix socket. To run this example, open a shell and run the server `go run ./networking/unix-socket/server/main.go`. In another shell run the client `go run ./networking/unix-socket/client/main.go`.
 
-<u>Http programming</u>
+## Http programming
 
 These examples demonstrate the use of standard library `net/http` package.
 
@@ -19,12 +19,8 @@ These examples demonstrate the use of standard library `net/http` package.
 * [Http server](./http-server/main.go) - this demonstrates http server programming.
 * [Webserver](./webserver) - these examples demonstrate web and file servers programming.
 
-<u>URL handling</u>
+## URL handling
 
 These examples demonstrates the use of standard library `net/url` operations.
 
 * [URL parsing](./urlparse/url_test.go) - This demonstrate operation to parse URL.
-
-## References
-
-* My collection of [advanced networking patterns](https://github.com/paulwizviz/go-networking) - This include the use of non-standard packages.
