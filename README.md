@@ -24,6 +24,7 @@ My brain dump on topics about core features of Go.
 * Standard libraries
     * [Context](./context/doc.md)
     * [Encoding](./encoding/doc.md)
+    * [Logging](./logging/doc.md)
     * [Networking](./networking/doc.md)
     * [Reflection](./reflection/doc.md)
     * [Testing](./tests/doc.md)
