@@ -3,6 +3,7 @@
 My brain dump on topics about core features of Go.
 
 ## Topics
+
 * Program Structure
     * [Package, Module and Project Layout](./module/doc.md)
     * [Idiomatic Go](./idiomatic/idiomatic.md)
@@ -17,6 +18,7 @@ My brain dump on topics about core features of Go.
     * [Map](./maps/doc.md)
     * [Struct](./struct/doc.md)
 * [Concurrency](./concurrency/doc.md)
+* [Embedding Files](./embed/doc.md)
 * [Error Handling](./error/doc.md)
 * [Functions](./funcs/doc.md)
 * [Generics](./generics/doc.md)
