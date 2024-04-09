@@ -9,15 +9,18 @@ For advanced networking patterns, please refer to [my other github repositories]
 These examples demonstrate the use of standard library `net` package.
 
 * [Auto assigning port](./auto-assign-port/main.go) - this demonstrates technique to auto assign a port.
-* [Unix socket programming](./unix-socket/) - this demonstrates client server via unix socket. To run this example, open a shell and run the server `go run ./networking/unix-socket/server/main.go`. In another shell run the client `go run ./networking/unix-socket/client/main.go`.
+* [Unix socket programming](./unix-socket/main.go) - this demonstrates client server via unix socket. To run this example, run the command:
+```bash
+go run networking/unix-socket/main.go -message="<your message here>"
+```
+This will send your message from a client to the server via `./temp/socket`.
 
 ## Http programming
 
-These examples demonstrate the use of standard library `net/http` package.
+These examples demonstrate the use of standard library `net/http` package and `httptest`.
 
 * [Http client](./http-client/client_test.go) - this demonstrates http client programming.
 * [Http server](./http-server/main.go) - this demonstrates http server programming.
-* [Webserver](./webserver) - these examples demonstrate web and file servers programming.
 
 ## URL handling
 
