@@ -12,4 +12,4 @@ Here is a [working example](./xml_test.go) demonstrating the use standard librar
 
 ## Non-standard libraries
 
-Please refer to [GitHub](https://github.com/paulwizviz/go-serialization.git)
+Please refer to [GitHub](https://github.com/paulwizviz/go-networking.git) for serialization techniques not based standard libraries.
