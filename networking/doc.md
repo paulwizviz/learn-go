@@ -4,12 +4,13 @@ This section illutrates the use standard library to build basic aspect of networ
 
 For advanced networking patterns, please refer to [my other github repositories](https://github.com/paulwizviz/go-networking).
 
-## TCP and Unix Socket programming
+## Network system programming
 
-These examples demonstrate the use of standard library `net` package.
+Here is the working example [./netif/main.go](./netif/main.go) demonstrating techniques to network interfaces and assign ports.
 
-* [Auto assigning port](./auto-assign-port/main.go) - this demonstrates technique to auto assign a port.
-* [Unix socket programming](./unix-socket/main.go) - this demonstrates client server via unix socket. To run this example, run the command:
+## Unix Socket programming
+
+Please refer to [./unix-socket/main.go](./unix-socket/main.go) demonstrating client server communications via unix socket. To run this example, execute the command:
 ```bash
 go run networking/unix-socket/main.go -message="<your message here>"
 ```
