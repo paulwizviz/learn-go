@@ -35,6 +35,7 @@ func networkInterface() string {
 }
 
 func assignPort() string {
+	// Port :0 causes the listener to assign a port number
 	listener, err := net.Listen("tcp", ":0")
 	if err != nil {
 		fmt.Println(err)
@@ -44,9 +45,11 @@ func assignPort() string {
 }
 
 func main() {
-	// Reading network interface
+	fmt.Println("Result from ifconfig")
 	fmt.Println(ifConfig())
+	fmt.Println("======")
+	fmt.Println("Result from net.Interface")
 	fmt.Println(networkInterface())
-	// Auto assign port
-	fmt.Println(assignPort())
+	fmt.Println("======")
+	fmt.Printf("Assigned poer: %v", assignPort())
 }
