@@ -34,12 +34,11 @@ My brain dump on topics about core features of Go.
     * [Testing](./tests/doc.md)
     * [Template](./templates/doc.md)
 
-## Working projects
+## Cumulating Projects
 
-The following are my example projects:
+The following projects are a cumulation of the techniques presented here:
 
 * [Go Web](https://github.com/paulwizviz/go-web)
-* [Lottery stat](https://github.com/paulwizviz/lotterystat)
 * [Data Lake](https://github.com/paulwizviz/datalake)
 
 ## References
