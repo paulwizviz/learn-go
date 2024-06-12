@@ -8,7 +8,7 @@ There are three basic elements of Go concurrency:
 * Waitgroup;
 * Channels.
 
-# Goroutines
+## Goroutines
 
 Adding the keyword `go` added to a function denotes a code block that can run in parallel if a processor supports it.
 
