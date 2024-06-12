@@ -45,6 +45,7 @@ The following examples are based on buffered channel.
 
 * [Example 2a](./channel/ex2a/main.go) demonstrates a deadlock where there the receiving channel is expecting more messages than being sent.
 * [Example 2b](./channel/ex2b/main.go) demonstrate the use of select to avoid sending data to buffered channel when it is full.
+* [Example 2c](./channel/ex2c/main.go) this example will result in a deadlock as the receiver tries to drain an empty buffer.
 
 
 ## Waitgroup
