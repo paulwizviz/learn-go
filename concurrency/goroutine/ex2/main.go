@@ -6,10 +6,24 @@ import (
 )
 
 func main() {
+	// This Go routine executes and hands off to second go routine.
+	// It runs for ever until main routine ends.
 	go func() {
-		fmt.Println("Hello, 世界")
+		for {
+			fmt.Println("Go routine 1")
+			time.Sleep(50 * time.Millisecond)
+		}
 	}()
 
-	time.Sleep(100 * time.Microsecond) // This cause the main routine to sleep for 100 microsec.
-	// The main routine sleeps long enought for goroutine to complete execution so you will see "Hello, 世界"
+	// This Go routine executes and hands off to main routine.
+	// It runs forevet until main routine ends.
+	go func() {
+		for {
+			fmt.Println("Go routine 2")
+			time.Sleep(50 * time.Millisecond)
+		}
+	}()
+
+	// Main routine sleeps for 1 second then ends.
+	time.Sleep(1 * time.Second)
 }

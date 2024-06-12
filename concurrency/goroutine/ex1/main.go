@@ -6,10 +6,11 @@ import (
 
 func main() {
 	go func() {
-		// This is a goroutine that is concurrent to the main routine
-		fmt.Println("Hello") // This blocks the goroutine for a period of time. IO operations are typically blocked
+		// This is operation executes in a goroutine
+		// it runs and than hand off to the main routine
+		fmt.Println("Hello") // io operations. It requires time to complete execution
 	}()
 
-	// This is the main routine and it executes immediately after the goroutine executes
-	fmt.Println("World") // This operations blocks the main routine but it does not block long enough for the goroutine's print operations to execute
+	// This is the main rountine it ends before go routine ends
+	// Hence no hello
 }

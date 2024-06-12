@@ -14,15 +14,15 @@ Adding the keyword `go` added to a function denotes a code block that can run in
 
 <u>Example 1</u>
 
-This [working example](./goroutine/ex1/main.go) demonstrates a goroutine running within a main routine where the main ends before goroutine completes.
+This [working example](./goroutine/ex1/main.go) demonstrates a goroutine where main routine ends before goroutine completes.
 
 <u>Example 2</u>
 
-This [Working example](./goroutine/ex2/main.go) demonstrates the main routine sleeping for 100ms so the goroutine can complete its routine.
+This [Working example](./goroutine/ex2/main.go) demonstrates the main routine sleeping for 1s whilsts two Go routines run concurrently.
 
 ## Channels
 
-A channel provide a way goroutines to communicate with each other. There are two types of channels:
+A channel is a mechanism for goroutine to communicate with each other. There are two types of channels:
 
 * <b>Unbuffered channel</b> -- this type of channel requires a receiving channel to be available when a message is emitted from a sending channel.
 * <b>Buffered channel</b>
