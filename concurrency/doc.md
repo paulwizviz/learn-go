@@ -22,42 +22,30 @@ This [Working example](./goroutine/ex2/main.go) demonstrates the main routine sl
 
 ## Channels
 
-A channel is a mechanism for goroutine to communicate with each other. There are two types of channels:
+A channel is a mechanism for goroutines and the main routine to communicate with each other. There are two types of channels:
 
-* <b>Unbuffered channel</b> -- this type of channel requires a receiving channel to be available when a message is emitted from a sending channel.
-* <b>Buffered channel</b>
+* <b>Unbuffered channel</b> -- This type of channel requires a receiving channel to be available when a message is emitted from a sending channel. If there is no receiver it will cause a deadlock.
+* <b>Buffered channel</b> -- A buffer channel may receive message without any receiver. If you overflow the buffer it will cause a deadlock. If the receiver tries to access more message than is available in the buffer it will cause a deadlock.
 
 <u>Example 1</U>
 
-This [working example](./channel/ex1/main.go) demonstrates the operation of an unbuffered channel where the receiving channel is blocked until a message is emitted from the emitting channel.
+The following examples are based on unbuffered channel.
+
+* [Example 1a](./channel/ex1a/main.go) we create an unbuffered channel without a receiving channel, causing Goroutine deadlock.
+* [Example 1b](./channel/ex1b/main.go) demonstrates blocking operations with channel
+* [Example 1c](./channel/ex1c/main.go) demonstrates a scenario with safeguard to check if channel is closed.
+* [Example 1d](./channel/ex1d/main.go) demonstrates a scenario with no safeguard.
+* [Example 1e](./channel/ex1e/main.go) demonstrates closing of channel prematurely.
+* [Example 1f](./channel/ex1f/main.go) using alternative ways to signal closure of channel.
+* [Example 1g](./channel/ex1g/main.go) using ranging to avoid goroutine deadlock
 
 <u>Example 2</u>
 
-This [working example](./channel/ex2/main.go) demonstrates a deadlock where there the receiving channel is expecting more messages than being sent.
+The following examples are based on buffered channel.
 
-<u>Example 3</u>
+* [Example 2a](./channel/ex2a/main.go) demonstrates a deadlock where there the receiving channel is expecting more messages than being sent.
+* [Example 2b](./channel/ex2b/main.go) demonstrate the use of select to avoid sending data to buffered channel when it is full.
 
-This [working example](./channel/ex3/main.go) demonstrates the closing of a channel before a message is sent.
-
-<u>Example 4</u>
-
-This [working example](./channel/ex4/main.go) demonstrates a technique to determine if a channel is opened or closed.
-
-<u>Example 5</u>
-
-This [working example](./channel/ex5/main.go) demonstrates the use of range to determined if a channel has been drained of all sending messages.
-
-<u>Example 6</u>
-
-This [working example](./channel/ex6/main.go) demonstrate the concept of a buffered channel.
-
-<u>Example 7</u>
-
-This [working example](./channel/ex7/main.go) demonstrates the use of select to protect data injestion into a channel when the buffer is full and there is no receiving channel.
-
-<u>Example 8</u>
-
-This [working example](./channel/ex8/main.go) demonstrates the use of select to determine the first goroutine to send a signal to the main routine.
 
 ## Waitgroup
 

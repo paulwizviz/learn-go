@@ -1,10 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	c := make(chan string)
 	go func(ch chan<- string) {
+		// Sends five messages then stops
+		// sending to channel
 		for i := 1; i < 6; i++ {
 			ch <- "hello"
 		}
