@@ -1,6 +1,8 @@
 # Channels
 
-A channel is a mechanism for goroutines to communicate with each other. There are two types of channels:
+A channel is a mechanism for goroutines to communicate with each other. Think of channels like a pipe where messages are sent.
+
+There are two types of channels:
 
 * [Unbuffered channel](#unbuffered-channels)
 * [Buffered channel](#buffered-channels)
@@ -37,8 +39,25 @@ In many real world scenarios, multiple messages sent to a sender. However, the r
 
 A buffer channel may receive message without any receiver. If you overflow the buffer it will cause a deadlock. If the receiver tries to access more message than is available in the buffer it will cause a deadlock.
 
-* [Example 2a](./ex2a/main.go) demonstrates the use of buffered channel before a receiver is available and no deadlock (see also [Example 1a](./channel/ex1a/main.go) for opposite)
-* [Example 2b](./ex2b/main.go) when you try to pull more messages than is available in the buffer
-* [Example 2c](./ex2c/main.go) this cause a deadlock if you push more messages to the buffer's capacity.
-* [Example 2d](./ex2d/main.go) this use select to prevent more message when buffer is full
+### Example 2a - Sender and receiver
+
+These examples demonstrates the relationship between sender and receiver.
+
+* [Example 2a1](./ex2a1/main.go) demonstrates the use of buffered channel before a receiver is available and no deadlock (see also [Example 1a](./channel/ex1a/main.go) for opposite).
+* [Example 2a2](./ex2a2/main.go) demonstrate a deadlock situation when you try to push more to than the buffer capacity .
+
+### Example 2b - Blocking operations
+
+These examples show operations where channels are blocked.
+
+* [Example 2b1](./ex2b1/main.go) this demonstrates channel is blocked when more messages is sent than capacity.
+* [Example 2b2](./ex2d/main.go) this use select to prevent more message pushed to sender when buffer is full
+
+### Example 2c - Synchronising between goroutine
+
+These examples show the use of signals to synchronise channels across goroutine.
+
+* [Example 2c1](./ex2c1/main.go) demonstrates lack of safeguards to prevent deadlock.
+* [Example 2c2](./ex2c2/main.go) demionstrates the use of range to safeguard channels.
+* [Example 2c3](./ex2c3/main.go) demonstrates safeguard to ensure loop breaks when signal close is trigger. 
 
