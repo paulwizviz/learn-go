@@ -43,14 +43,17 @@ The following projects are a cumulation of the techniques presented here:
 
 ## References
 
-* [Official Documentation](https://go.dev/doc/)
-* [Go 101](https://go101.org/article/101.html)
+* Fundamentals
+    * [Official Documentation](https://go.dev/doc/)
+    * [Go 101](https://go101.org/article/101.html)
 * Memory management
     * [Understanding Allocations: the Stack and the Heap - GopherCon SG 2019](https://www.youtube.com/watch?v=ZMZpH4yT7M0)
     * [Go Allocations - Memory Layout](https://vladvalkov.dev/go-allocations-memory-layout)
-* Architecture
+* Package management
     * [https://go.dev/blog/using-go-modules](https://go.dev/blog/using-go-modules)
     * [Design the architecture, name the components, document the details - Paul Sitoh](https://paulwizviz.github.io/go/2022/12/23/go-proverb-architecture.html)
+* Runtime
+    * [Understanding the Go runtime - Jesus Es](https://www.youtube.com/watch?v=YpRNFNFaLGY)
 
 ## Disclaimer
 
