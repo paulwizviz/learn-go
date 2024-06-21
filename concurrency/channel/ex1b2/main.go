@@ -15,5 +15,5 @@ func main() {
 	}(c)
 
 	fmt.Println("Waiting to receive message from channel")
-	fmt.Println("Incoming message: ", <-c) // This is blocked until sender channel has received message
+	fmt.Println("Incoming message: ", <-c) // This is blocked until sender channel has sent the message
 }

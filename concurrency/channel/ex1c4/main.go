@@ -7,8 +7,8 @@ import (
 
 func main() {
 	c := make(chan string)
-	q := make(chan struct{})
-	go func(ch chan<- string) {
+	s := make(chan struct{})
+	go func(ch chan<- string, sig chan<- struct{}) {
 		// Sends five messages then stops
 		// sending to channel
 		for i := 1; i < 6; i++ {
@@ -16,14 +16,14 @@ func main() {
 		}
 		// We send an arbitrary signal to quit
 		// This is used in lieu of close.
-		q <- struct{}{}
-	}(c)
+		sig <- struct{}{}
+	}(c, s)
 	for {
 		// Using select to protect message
 		select {
 		case m := <-c:
 			fmt.Println(m)
-		case <-q:
+		case <-s:
 			log.Fatal("End of messages")
 		}
 	}
