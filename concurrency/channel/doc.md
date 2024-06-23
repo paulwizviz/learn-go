@@ -57,4 +57,5 @@ These examples show the use of signals to synchronise channels across goroutine.
 * [Example 2c1](./ex2c1/main.go) demonstrates receiver draining more messages than is available without safeguards to prevent deadlock.
 * [Example 2c2](./ex2c2/main.go) demionstrates the use of range to safeguard channels.
 * [Example 2c3](./ex2c3/main.go) demonstrates safeguard to ensure loop breaks when signal close is trigger. 
+* [Example 2c4](./ex2c4/main.go) demonstrates the use of buffered function for asynchronous function.
 
