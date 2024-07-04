@@ -48,7 +48,8 @@ These examples demonstrates the relationship between sender and receiver.
 
 ### Example 2b - Blocking operations
 
-This [Example 2b](./ex2b/main.go) shows operation when the buffered channel if filled to capacity before it is drained. The channel is blocked and not able to receive more messages. 
+This [Example 2b1](./ex2b1/main.go) shows sender is blocked because buffer is full.
+This [Example 2b2](./ex2b2/main.go) shows receiver is block because buffer is empty. 
 
 ### Example 2c - Synchronising between goroutine
 
