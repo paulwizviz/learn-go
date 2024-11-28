@@ -10,6 +10,7 @@ type Ex21 struct {
 	Field2 int     `json:"field2"`
 	Field3 float32 `json:"field3"`
 	Field4 string  `json:"-"`
+	Field5 string  `json:"field5,omitempty"`
 }
 
 func Example_marshalCorrectTags() {

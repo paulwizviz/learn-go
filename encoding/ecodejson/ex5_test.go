@@ -43,6 +43,13 @@ func (e *Ex5) UnmarshalJSON(data []byte) error {
 		e.Data = data2
 		return nil
 	}
+
+	var s string
+	if err := json.Unmarshal(temp.Data, &s); err == nil && string(temp.Data) != "" {
+		e.Data = s
+		return nil
+	}
+
 	return fmt.Errorf("unknown types")
 }
 
@@ -103,6 +110,19 @@ func Example_unmarshalData2() {
 
 	// Output:
 	// {1 {John}}
+}
+
+func Example_unmarshalString() {
+	b := []byte(` {"id":1,"data":"hello"}`)
+	var ex5 Ex5
+	err := json.Unmarshal(b, &ex5)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(ex5)
+
+	// Output:
+	// {1 hello}
 }
 
 func Example_unmarshalInvalidData() {
