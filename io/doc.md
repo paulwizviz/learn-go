@@ -12,5 +12,15 @@ Here is an example implementing [stdin](./stdin/main.go)
 
 Here are examples of demonstrating custom implementations of:
 
-* [Reader](./reader/readers_test.go)
-* [Writer](./writer/writers_test.go)
+* [Reader](#io-reader)
+* [Writer](#io-writer)
+
+### IO Reader
+
+[Example 1](./reader/stringreader_test.go) - This example derive a reader from standard package stringreader. We create a buffer of smaller than the initiate data. The read method is invoked and the reader store the index to the last string.
+
+[Example 2](./reader/stringreader_test.go) - This example involves the use of a custom reader.
+
+### IO Writer
+
+[Writer](./writer/writers_test.go)
