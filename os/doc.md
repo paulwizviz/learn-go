@@ -2,6 +2,10 @@
 
 This package provide interfaces and functionalities to interact with, principally Unix-based, operating system.
 
+## File
+
+Example file operations [here](./file/file_test.go)
+
 ## Signals
 
 Go [signal package](https://pkg.go.dev/os/signal) provides operations to handle incoming signals. A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
