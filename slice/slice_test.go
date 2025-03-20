@@ -3,6 +3,7 @@ package slice
 import (
 	"fmt"
 	"slices"
+	"testing"
 )
 
 func Example_initSlice() {
@@ -23,6 +24,33 @@ func Example_initSlice() {
 	// Capacity: 0 Length: 0 Data: []
 	// Length: 2 Capacity: 2 Data: [0 0]
 	// Length: 0 Capacity: 2 Data: []
+}
+
+func BenchmarkSliceAllocation(b *testing.B) {
+	b.Run("zero length and capacity", func(b *testing.B) {
+		s := make([]int, 0)
+		for range b.N {
+			for v := range 1_000 {
+				_ = append(s, v)
+			}
+		}
+	})
+	b.Run("length 1000 capacity 0", func(b *testing.B) {
+		s := make([]int, 1_000)
+		for range b.N {
+			for v := range 1_000 {
+				_ = append(s, v)
+			}
+		}
+	})
+	b.Run("length 0 capacity 1000", func(b *testing.B) {
+		s := make([]int, 0, 1_000)
+		for range b.N {
+			for v := range 1_000 {
+				_ = append(s, v)
+			}
+		}
+	})
 }
 
 func Example_makeSlice() {
@@ -95,14 +123,13 @@ func Example_append() {
 
 	source := []int{1, 2, 3}
 	fmt.Printf("Source: %v\n", source)
-	target := []int{1, 2}
+	target := make([]int, 2)
 	target = append(target, source...)
 	fmt.Printf("Target: %v\n", target)
 
 	// Output:
 	// Source: [1 2 3]
-	// Target: [1 2 1 2 3]
-
+	// Target: [0 0 1 2 3]
 }
 
 func Example_subSlice() {
@@ -128,6 +155,50 @@ func Example_removeElementSlice() {
 
 	// Output:
 	// Using append: [1 2 3 5 6 7]
+}
+
+func BenchmarkSliceDeleteWithAppend(b *testing.B) {
+	s := []int{}
+	for v := range 100 {
+		s = append(s, v)
+	}
+	b.Run("case 1", func(b *testing.B) {
+		for range b.N {
+			_ = append(s[:1], s[3:]...)
+		}
+	})
+	b.Run("case 2", func(b *testing.B) {
+		for range b.N {
+			_ = append(s[:24], s[25:]...)
+		}
+	})
+	b.Run("case 3", func(b *testing.B) {
+		for range b.N {
+			_ = append(s[:98], s[99:]...)
+		}
+	})
+}
+
+func BenchmarkSliceDeleteWithSlices(b *testing.B) {
+	s := []int{}
+	for v := range 100 {
+		s = append(s, v)
+	}
+	b.Run("case 1", func(b *testing.B) {
+		for range b.N {
+			_ = slices.Delete(s, 1, 3)
+		}
+	})
+	b.Run("case 2", func(b *testing.B) {
+		for range b.N {
+			_ = slices.Delete(s, 24, 25)
+		}
+	})
+	b.Run("case 3", func(b *testing.B) {
+		for range b.N {
+			_ = slices.Delete(s, 98, 99)
+		}
+	})
 }
 
 func Example_multiDSlice() {
