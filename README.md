@@ -1,6 +1,6 @@
-# Overview
+# Learn-Go: Working examples
 
-My collection of my working examples of core Go features and references to resources (e.g. blogs, Youtube, etc) discussion Go.
+This repository contains working examples and links to learning materials on core Go features.
 
 ## Topics
 
