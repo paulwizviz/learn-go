@@ -16,7 +16,7 @@ Here is a [working example](./ex2/ex2_test.go).
 
 ## Embeded interface
 
-This example demonstrate a struct with an embedded interface type. You can use interface type to simulate Java style implementation.
+These examples demonstrate technique composition to overide behaviour.
 
 Here is a [working example](./ex3/ex3_test.go)
 
