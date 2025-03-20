@@ -11,7 +11,7 @@ This repository contains working examples and links to learning materials on cor
     * [Iota](./iota/doc.md)
     * [Strings and Rune](./str/doc.md)
 * Composite Types
-    * [Array and Slices](./slices/doc.md)
+    * [Array and Slices](./slice/doc.md)
     * [Map](./maps/doc.md)
     * [Struct](./struct/doc.md)
 * [Concurrency](./concurrency/doc.md)
