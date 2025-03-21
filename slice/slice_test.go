@@ -137,12 +137,24 @@ func Example_subSlice() {
 	fmt.Printf("len(source): %v, cap(source): %v\n", len(source), cap(source))
 	fmt.Printf("source[:3] %v source[4:] %v\n", source[:3], source[4:])
 
-	s := source[0:1:len(source)]
+	fmt.Printf("source[1:]: %v, len(source[1:]): %v\n", source[1:], len(source[1:]))
+	fmt.Printf("source[:1]: %v, len(source[:1]): %v\n", source[:1], len(source[:1]))
+	fmt.Printf("source[6:]: %v, len(source[6:]): %v\n", source[6:], len(source[6:]))
+	fmt.Printf("source[7:]: %v, len(source[7:]): %v\n", source[7:], len(source[7:]))
+
+	fmt.Printf("source[1:2]: %v, len(source[1:2): %v\n", source[1:2], len(source[1:2]))
+
+	s := source[0:1:len(source)] // Create a subset with a large capacity
 	fmt.Printf("len(s): %v cap(s) %v\n", len(s), cap(s))
 
 	// Output:
 	// len(source): 7, cap(source): 7
 	// source[:3] [1 2 3] source[4:] [5 6 7]
+	// source[1:]: [2 3 4 5 6 7], len(source[1:]): 6
+	// source[:1]: [1], len(source[:1]): 1
+	// source[6:]: [7], len(source[6:]): 1
+	// source[7:]: [], len(source[7:]): 0
+	// source[1:2]: [2], len(source[1:2): 1
 	// len(s): 1 cap(s) 7
 }
 
