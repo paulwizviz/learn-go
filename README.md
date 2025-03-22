@@ -2,7 +2,7 @@
 
 This repository contains working examples and links to learning materials on core Go features.
 
-## Topics
+## Core Features
 
 * Basic Types
     * Boolean - type `bool` (`true` or `false`)
@@ -34,13 +34,13 @@ This repository contains working examples and links to learning materials on cor
     * [Testing](./tests/doc.md)
     * [Template](./templates/doc.md)
 
-## Cumulating Projects
+## Advance Topics
 
-The following projects are a cumulation of the techniques presented here:
-
-* [Go Web](https://github.com/paulwizviz/go-web)
-* [Data Lake](https://github.com/paulwizviz/datalake)
-* [Go algorithm and data models](https://github.com/paulwizviz/go-algorithm) 
+* [Algorithm and data models](https://github.com/paulwizviz/go-algorithm)
+* [Cryptography](https://github.com/paulwizviz/go-crypto)
+* [Networking](https://github.com/paulwizviz/go-networking)
+* [Security](https://github.com/paulwizviz/go-security)
+* [Serialization](https://github.com/paulwizviz/go-serialization)
 
 ## References
 
