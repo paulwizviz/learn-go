@@ -40,6 +40,7 @@ The following projects are a cumulation of the techniques presented here:
 
 * [Go Web](https://github.com/paulwizviz/go-web)
 * [Data Lake](https://github.com/paulwizviz/datalake)
+* [Go algorithm and data models](https://github.com/paulwizviz/go-algorithm) 
 
 ## References
 
