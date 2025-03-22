@@ -37,10 +37,8 @@ This repository contains working examples and links to learning materials on cor
 ## Advance Topics
 
 * [Algorithm and data models](https://github.com/paulwizviz/go-algorithm)
-* [Cryptography](https://github.com/paulwizviz/go-crypto)
-* [Networking](https://github.com/paulwizviz/go-networking)
-* [Security](https://github.com/paulwizviz/go-security)
-* [Serialization](https://github.com/paulwizviz/go-serialization)
+* [Embedded web programming](https://github.com/paulwizviz/go-web)
+* [Concurrency programming](https://github.com/paulwizviz/lotterystat)
 
 ## References
 
