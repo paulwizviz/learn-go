@@ -1,11 +1,11 @@
-package main
+package reflection
 
 import (
 	"fmt"
 	"reflect"
 )
 
-func Example_primitive() {
+func Example_primitiveValueOf() {
 
 	// int type
 	intValue := 10
@@ -15,12 +15,12 @@ func Example_primitive() {
 	// int pointer
 	intPtr := &intValue
 	v = reflect.ValueOf(intPtr)
-	fmt.Printf("Pointer. Value: v is <pointer address> Kind: %v Type: %v Element: %v\n", v.Kind(), v.Type(), v.Elem())
+	fmt.Printf("Pointer. Value: <v is pointer address> Kind: %v Type: %v Element: %v\n", v.Kind(), v.Type(), v.Elem())
 
 	// nil pointer
 	intPtr = nil
 	v = reflect.ValueOf(intPtr)
-	fmt.Printf("Nil pointer. Value: v is <pointer address> Kind: %v Type: %v Element: %v IsNil: %v\n", v.Kind(), v.Type(), v.Elem(), v.IsNil())
+	fmt.Printf("Nil pointer. Value: <v is pointer address> Kind: %v Type: %v Element: %v IsNil: %v\n", v.Kind(), v.Type(), v.Elem(), v.IsNil())
 
 	// Type wrapper
 	type Integer int
@@ -30,12 +30,32 @@ func Example_primitive() {
 
 	// output:
 	// Primitive. Value: 10 Kind: int Type: int
-	// Pointer. Value: v is <pointer address> Kind: ptr Type: *int Element: 10
-	// Nil pointer. Value: v is <pointer address> Kind: ptr Type: *int Element: <invalid reflect.Value> IsNil: true
+	// Pointer. Value: <v is pointer address> Kind: ptr Type: *int Element: 10
+	// Nil pointer. Value: <v is pointer address> Kind: ptr Type: *int Element: <invalid reflect.Value> IsNil: true
 	// Alias. Value: 1 Kind: int
 }
 
-func Example_collection() {
+func Example_valueOf() {
+	var h1 Human = Person{
+		FirstName: "John",
+		Surname:   "Doe",
+	}
+	v := reflect.ValueOf(h1)
+	fmt.Printf("Struct interface. Value: %v Kind: %v\n", v, v.Kind())
+
+	var h2 Human = &Person{
+		FirstName: "John",
+		Surname:   "Doe",
+	}
+	v = reflect.ValueOf(h2)
+	fmt.Printf("Struct interface. Value: %v Kind: %v\n", v, v.Kind())
+
+	// Output:
+	// Struct interface. Value: {John Doe} Kind: struct
+	// Struct interface. Value: &{John Doe} Kind: ptr
+}
+
+func Example_collectionValueOf() {
 
 	m := map[string]int{
 		"a": 1,
@@ -54,7 +74,7 @@ func Example_collection() {
 
 }
 
-func Example_struct() {
+func Example_structValueOf() {
 
 	// Struct
 	p := Person{
@@ -78,24 +98,25 @@ func Example_struct() {
 	// Value: <nil> Kind: ptr
 }
 
-func Example_func() {
+func Example_funcValueOf() {
 
 	v := reflect.ValueOf(fn)
-	fmt.Printf("Named func. Value: <address of v> Type: %v Kind: %v\n", v.Type(), v.Kind())
+	fmt.Printf("Type of v: %T\n", v)
+	fmt.Printf("Value: <v is address of v> Type: %v Kind: %v\n", v.Type(), v.Kind())
 
 	var fn1 fname
 	v = reflect.ValueOf(fn1)
-	fmt.Printf("Named func. Value: %v Type: %v Kind: %v\n", v, v.Type(), v.Kind())
+	fmt.Printf("Value: <v is address> Type: %v Kind: %v\n", v.Type(), v.Kind())
 
 	fn1 = func(s string) error {
 		return nil
 	}
 	v = reflect.ValueOf(fn1)
-	fmt.Printf("Named func. Value: <v is address> Type: %v Kind: %v\n", v.Type(), v.Kind())
+	fmt.Printf("Value: <v is address> Type: %v Kind: %v\n", v.Type(), v.Kind())
 
 	// output:
-	// Named func. Value: <address of v> Type: func() Kind: func
-	// Named func. Value: <nil> Type: main.fname Kind: func
-	// Named func. Value: <v is address> Type: main.fname Kind: func
-
+	// Type of v: reflect.Value
+	// Value: <v is address of v> Type: func() Kind: func
+	// Value: <v is address> Type: reflection.fname Kind: func
+	// Value: <v is address> Type: reflection.fname Kind: func
 }
