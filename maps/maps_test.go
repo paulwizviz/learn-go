@@ -73,3 +73,25 @@ func Example_rangingMaps() {
 	// 456
 	// B
 }
+
+type s struct {
+	field int
+}
+
+func Example_structKeys() {
+
+	k1 := s{1}
+	k2 := s{2}
+
+	m := map[s]string{k1: "hello", k2: "world"}
+	v1 := m[k1]
+	fmt.Println(v1)
+
+	kp1 := &s{1}
+	v2 := m[*kp1]
+	fmt.Println(v2)
+
+	// Output:
+	// 	hello
+	// hello
+}
