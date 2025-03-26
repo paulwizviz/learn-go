@@ -1,4 +1,4 @@
-package main
+package structs
 
 import "fmt"
 
@@ -25,7 +25,7 @@ func (a AnotherCompoundStruct) StructName() string {
 	return a.Name
 }
 
-func main() {
+func Example_compoundStruct() {
 	e1 := CompoundStruct{
 		SimpleStruct{
 			ID:   123,
@@ -42,9 +42,15 @@ func main() {
 		Name: "Hello",
 	}
 
-	fmt.Println(e1) // Output: {{123 Embedded} folks}
-	fmt.Println(e2) // Output: {{234 Embedded struct} Hello}
+	fmt.Println(e1)
+	fmt.Println(e2)
 
+	// Output:
+	// {{123 Embedded} folks}
+	// {{234 Embedded struct} Hello}
+}
+
+func Example_accessField() {
 	e3 := CompoundStruct{
 		SimpleStruct: SimpleStruct{
 			ID:   234,
@@ -53,10 +59,10 @@ func main() {
 		Name: "Hello",
 	}
 
-	fmt.Println(e3.ID)                // Output: 234
-	fmt.Println(e3.Name)              // Output: Hello
-	fmt.Println(e3.SimpleStruct.Name) // This disembiguate embedded struct name. Output: Embedded struct
-	fmt.Println(e3.StructName())      // This calls the embedded struct method. Output: Embedded struct
+	fmt.Println(e3.ID)
+	fmt.Println(e3.Name)
+	fmt.Println(e3.SimpleStruct.Name) // This disembiguate embedded struct name.
+	fmt.Println(e3.StructName())      // This calls the embedded struct method.
 
 	e4 := AnotherCompoundStruct{
 		SimpleStruct: SimpleStruct{
@@ -66,6 +72,14 @@ func main() {
 		Name: "Hello",
 	}
 
-	fmt.Println(e4.StructName())              // This will always pick the method of the compounded type. Output: Hello
-	fmt.Println(e4.SimpleStruct.StructName()) // This ensure that the embedded type method is called. Output: Embedded struct
+	fmt.Println(e4.StructName())              // This will always pick the method of the compounded type.
+	fmt.Println(e4.SimpleStruct.StructName()) // This ensure that the embedded type method is called.
+
+	// Output:
+	// 234
+	// Hello
+	// Embedded struct
+	// Embedded struct
+	// Hello
+	// Embedded struct
 }

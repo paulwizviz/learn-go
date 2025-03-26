@@ -1,4 +1,4 @@
-package main
+package structs
 
 import "fmt"
 
@@ -17,11 +17,19 @@ func (c *Cat) SetName(n string) {
 	c.name = n
 }
 
-func main() {
+func Example_failed() {
+	defer func() {
+		err := recover()
+		fmt.Println(err)
+	}()
+
 	c := &Cat{
 		name: "cat",
 	}
 	fmt.Println(c.Name())
+	c.SetName("b")
 
-	c.SetName("b") // This will panic
+	// Output:
+	// cat
+	// runtime error: invalid memory address or nil pointer dereference
 }

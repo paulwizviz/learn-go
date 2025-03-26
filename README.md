@@ -13,7 +13,7 @@ This repository contains working examples and links to learning materials on cor
 * Composite Types
     * [Array and Slices](./slice/doc.md)
     * [Map](./maps/doc.md)
-    * [Struct](./struct/doc.md)
+    * [Struct](./structs/doc.md)
 * [Concurrency](./concurrency/doc.md)
 * [Embedding Files](./embed/doc.md)
 * [Error Handling](./error/doc.md)
