@@ -1,71 +1,100 @@
 package templates
 
 import (
-	"bytes"
 	"fmt"
+	"os"
 	"text/template"
 )
 
-type UserProfile struct {
-	FirstName string
-	Lastname  string
+type Address struct {
+	City     string
+	Country  string
+	PostCode string
 }
 
-func (s UserProfile) DisplayName(firstName string, lastname string) string {
-	return fmt.Sprintf("%v %v", firstName, lastname)
+type User struct {
+	Name    string
+	Age     int
+	Address Address
+	Hobbies []string
 }
 
-func Example_structWithMethodEx1() {
+func Example_structEx1() {
+	tmpl := `
+User Profile
+Name: {{.Name}}
+Age: {{.Age}}
+Address:
+City: {{.Address.City}}
+Country: {{.Address.Country}}
+Post Code: {{.Address.PostCode}}
+Hobbies: {{range .Hobbies}}<li>{{.}}</li>{{end}}`
 
-	tmplVars := `FirstName: {{.FirstName}}
-Lastname: {{.Lastname}}
-Displayname: {{displayName .FirstName .Lastname}}`
+	t := template.Must(template.New("user").Parse(tmpl))
 
-	var tmpl = template.Must(template.New("userprofile").Funcs(template.FuncMap{
-		"displayName": func(firstName string, lastname string) string { return fmt.Sprintf("%v %v", firstName, lastname) }}).Parse(tmplVars))
-
-	data := struct {
-		FirstName string
-		Lastname  string
-	}{
-		FirstName: "John",
-		Lastname:  "Doe",
+	user := User{
+		Name: "Alice",
+		Age:  30,
+		Address: Address{
+			City:     "London",
+			Country:  "UK",
+			PostCode: "SW1A 0AA",
+		},
+		Hobbies: []string{"reading", "hiking", "coding"},
 	}
 
-	var buf bytes.Buffer
-	tmpl.Execute(&buf, data)
-	fmt.Println(buf.String())
-
-	// Output:
-	// FirstName: John
-	// Lastname: Doe
-	// Displayname: John Doe
-
-}
-
-func Example_structWithMethodEx2() {
-
-	tmplVars := `FirstName: {{.FirstName}}
-Lastname: {{.Lastname}}
-DisplayName: {{.DisplayName .FirstName .Lastname}}`
-
-	tmpl, err := template.New("userprofile").Parse(tmplVars)
+	err := t.Execute(os.Stdout, user)
 	if err != nil {
-		fmt.Println("Not expected")
+		fmt.Println(err)
 	}
-
-	data := UserProfile{
-		FirstName: "John",
-		Lastname:  "Doe",
-	}
-
-	var buf bytes.Buffer
-	tmpl.Execute(&buf, data)
-	fmt.Println(buf.String())
 
 	// Output:
-	// FirstName: John
-	// Lastname: Doe
-	// DisplayName: John Doe
+	// User Profile
+	// Name: Alice
+	// Age: 30
+	// Address:
+	// City: London
+	// Country: UK
+	// Post Code: SW1A 0AA
+	// Hobbies: <li>reading</li><li>hiking</li><li>coding</li>
+}
 
+func Example_structEx2() {
+	tmpl := `
+User Profile
+Name: {{.Name}}
+Age: {{.Age}}
+Address:{{with .Address}}
+City: {{.City}}
+Country: {{.Country}}
+Post Code: {{.PostCode}}{{end}}
+Hobbies: {{range .Hobbies}} {{.}}{{end}}`
+
+	t := template.Must(template.New("user").Parse(tmpl))
+
+	user := User{
+		Name: "Alice",
+		Age:  30,
+		Address: Address{
+			City:     "London",
+			Country:  "UK",
+			PostCode: "SW1A 0AA",
+		},
+		Hobbies: []string{"reading", "hiking", "coding"},
+	}
+
+	err := t.Execute(os.Stdout, user)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	// Output:
+	// User Profile
+	// Name: Alice
+	// Age: 30
+	// Address:
+	// City: London
+	// Country: UK
+	// Post Code: SW1A 0AA
+	// Hobbies:  reading hiking coding
 }
