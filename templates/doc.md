@@ -5,6 +5,7 @@ Go provides data driven templates for generating textual output.
 ## Working Examples
 
 * [Conditional](./conditional_test.go)
+* [Pipes](./pipping_test.go)
 * [Range](./range_test.go)
 * [Reuse](./reuse_test.go)
 * [Structs](./structs_test.go)
