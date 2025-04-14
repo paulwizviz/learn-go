@@ -11,6 +11,7 @@ Here is a set of working examples demonstrating the use standard library to seri
 * [Example 3 - Custom serialisation](./ecodejson/ex3_test.go)
 * [Example 4 - Unmarshaling to interface](./ecodejson/ex4_test.go)
 * [Example 5 - Unmarshaling field with different types](./ecodejson/ex5_test.go)
+* [Example 6 - Unmarshaling new delimiter json](./ecodejson/ex6_test.go)
 
 ## XML serializer
 
