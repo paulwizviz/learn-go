@@ -2,6 +2,40 @@ package structs
 
 import "fmt"
 
+type Dog struct {
+	name string
+}
+
+func (d *Dog) SetName(n string) {
+	d.name = n
+}
+
+func (d Dog) Name() string {
+	return d.name
+}
+
+func Example_dog() {
+	d1 := Dog{
+		name: "bob",
+	}
+	fmt.Println(d1.Name())
+	d1.SetName("b")
+	fmt.Println(d1.Name())
+
+	d2 := &Dog{
+		name: "skippy",
+	}
+	fmt.Println(d2.Name())
+	d2.SetName("s")
+	fmt.Println(d2.Name())
+
+	// Output:
+	// bob
+	// b
+	// skippy
+	// s
+}
+
 type Cat struct {
 	name string
 }
@@ -17,7 +51,7 @@ func (c *Cat) SetName(n string) {
 	c.name = n
 }
 
-func Example_failed() {
+func Example_cat() {
 	defer func() {
 		err := recover()
 		fmt.Println(err)
