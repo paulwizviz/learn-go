@@ -22,14 +22,17 @@ type Data2 struct {
 
 func (e *Ex5) UnmarshalJSON(data []byte) error {
 
+	type Alias Ex5
 	temp := struct {
 		Data json.RawMessage `json:"data"`
-		ID   int             `json:"id"`
-	}{}
+		*Alias
+	}{
+		Alias: (*Alias)(e),
+	}
 	if err := json.Unmarshal(data, &temp); err != nil {
 		return err
 	}
-	e.ID = temp.ID
+
 	fmt.Printf("ID: %d Data: %s DataType: %T\n", temp.ID, temp.Data, temp.Data)
 
 	var data1 Data1
@@ -127,6 +130,8 @@ func Example_unmarshalString() {
 	fmt.Println(ex5)
 
 	// Output:
+	// ID: 1 Data: "hello" DataType: json.RawMessage
+	// e.Data: string
 	// {1 hello}
 }
 
@@ -139,5 +144,6 @@ func Example_unmarshalInvalidData() {
 	}
 
 	// Output:
+	// ID: 1 Data: {"name":"John"} DataType: json.RawMessage
 	// unknown types
 }
