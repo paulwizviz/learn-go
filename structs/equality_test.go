@@ -7,14 +7,6 @@ type AStruct struct {
 	field2 string
 }
 
-type BStruct struct {
-	AStruct
-}
-
-type CStruct struct {
-	*AStruct
-}
-
 func Example_equalByValue() {
 	a1 := AStruct{
 		field1: 1,
@@ -30,38 +22,6 @@ func Example_equalByValue() {
 
 	// Output:
 	// Same:  true
-}
-
-func Example_bStruct() {
-
-	a1 := BStruct{
-		AStruct{1, "hello"},
-	}
-
-	a2 := BStruct{
-		AStruct{1, "hello"},
-	}
-
-	fmt.Printf("Same %v", a1 == a2)
-
-	// Output:
-	// Same true
-}
-
-func Example_cStruct() {
-
-	a1 := CStruct{
-		&AStruct{1, "hello"},
-	}
-
-	a2 := CStruct{
-		&AStruct{1, "hello"},
-	}
-
-	fmt.Println(a1 == a2)
-
-	// Output:
-	// false
 }
 
 func Example_equalPtr() {
@@ -84,7 +44,47 @@ func Example_equalPtr() {
 	fmt.Printf("Different ptrs: %v %v", a1 != a3, *a1 == *a3)
 
 	// Output:
-	// Same ptr: &{1 hello} &{1 hello}
-	// Same ptr: &{4 hello} &{4 hello}
+	// Same ptrs: &{1 hello} &{1 hello}
+	// Same ptrs: &{4 hello} &{4 hello}
 	// Different ptrs: true true
+}
+
+type BStruct struct {
+	AStruct
+}
+
+func Example_bStruct() {
+
+	b1 := BStruct{
+		AStruct{1, "hello"},
+	}
+
+	b2 := BStruct{
+		AStruct{1, "hello"},
+	}
+
+	fmt.Printf("Same %v", b1 == b2)
+
+	// Output:
+	// Same true
+}
+
+type CStruct struct {
+	*AStruct
+}
+
+func Example_cStruct() {
+
+	a1 := CStruct{
+		&AStruct{1, "hello"},
+	}
+
+	a2 := CStruct{
+		&AStruct{1, "hello"},
+	}
+
+	fmt.Println(a1 == a2)
+
+	// Output:
+	// false
 }
