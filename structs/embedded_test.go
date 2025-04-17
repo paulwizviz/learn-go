@@ -7,22 +7,25 @@ type SimpleStruct struct {
 	Name string
 }
 
-func (s SimpleStruct) StructName() string {
-	return s.Name
+func Example_simpleStruct() {
+	s := SimpleStruct{
+		ID:   123,
+		Name: "Hello",
+	}
+
+	fmt.Println(s)
+	fmt.Println(s.ID)
+	fmt.Println(s.Name)
+
+	// Output:
+	// {123 Hello}
+	// 123
+	// Hello
 }
 
 type CompoundStruct struct {
 	SimpleStruct
 	Name string
-}
-
-type AnotherCompoundStruct struct {
-	SimpleStruct
-	Name string
-}
-
-func (a AnotherCompoundStruct) StructName() string {
-	return a.Name
 }
 
 func Example_compoundStruct() {
@@ -37,7 +40,7 @@ func Example_compoundStruct() {
 	e2 := CompoundStruct{
 		SimpleStruct: SimpleStruct{
 			ID:   234,
-			Name: "Embedded struct",
+			Name: "Embedded_struct",
 		},
 		Name: "Hello",
 	}
@@ -47,39 +50,31 @@ func Example_compoundStruct() {
 
 	// Output:
 	// {{123 Embedded} folks}
-	// {{234 Embedded struct} Hello}
+	// {{234 Embedded_struct} Hello}
 }
 
-func Example_accessField() {
-	e3 := CompoundStruct{
-		SimpleStruct: SimpleStruct{
-			ID:   234,
-			Name: "Embedded struct",
-		},
-		Name: "Hello",
+type AnotherCompoundStruct struct {
+	*SimpleStruct
+	Name string
+}
+
+func Example_anotherCompoundStruct() {
+	s := SimpleStruct{
+		ID:   123,
+		Name: "Another_Compound",
 	}
 
-	fmt.Println(e3.ID)
-	fmt.Println(e3.Name)
-	fmt.Println(e3.SimpleStruct.Name) // This disembiguate embedded struct name.
-	fmt.Println(e3.StructName())      // This calls the embedded struct method.
-
-	e4 := AnotherCompoundStruct{
-		SimpleStruct: SimpleStruct{
-			ID:   234,
-			Name: "Embedded struct",
-		},
-		Name: "Hello",
+	e1 := AnotherCompoundStruct{
+		SimpleStruct: &s,
+		Name:         "folks",
 	}
 
-	fmt.Println(e4.StructName())              // This will always pick the method of the compounded type.
-	fmt.Println(e4.SimpleStruct.StructName()) // This ensure that the embedded type method is called.
+	fmt.Println(e1.ID)
+	fmt.Println(e1.Name)
+	fmt.Println(e1.SimpleStruct.Name)
 
 	// Output:
-	// 234
-	// Hello
-	// Embedded struct
-	// Embedded struct
-	// Hello
-	// Embedded struct
+	// 123
+	// folks
+	// Another_Compound
 }
