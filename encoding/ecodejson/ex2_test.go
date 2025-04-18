@@ -91,7 +91,7 @@ func Example_marshalEx22() {
 		Field3 string `json:"field3"`
 	}{
 		Alias:  (*Alias)(&ex22),
-		Field3: "100",
+		Field3: fmt.Sprintf("%.2f", ex22.Field3),
 	}
 
 	b, err := json.Marshal(aux)
@@ -101,7 +101,7 @@ func Example_marshalEx22() {
 	fmt.Println(string(b))
 
 	// Output:
-	// {"field1":"abc","field2":1,"field3":"100"}
+	// {"field1":"abc","field2":1,"field3":"1.40"}
 
 }
 
