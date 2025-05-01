@@ -82,3 +82,30 @@ func Example_struct() {
 	// 2.3
 	// 3.4
 }
+
+func switchTypes[T Number](v T) {
+	switch v1 := any(v).(type) {
+	case int:
+		fmt.Printf("Int: %v\n", v1)
+	case float32:
+		fmt.Printf("Float32: %[1]v\n", v1)
+	default:
+		fmt.Printf("Type: %[1]T Value: %[1]v\n", v1)
+	}
+}
+
+func Example_switch() {
+	v := 20
+	switchTypes(v)
+
+	var v1 float32 = 2.0
+	switchTypes(v1)
+
+	var v2 uint8 = 5
+	switchTypes(v2)
+
+	// Output:
+	// Int: 20
+	// Float32: 2
+	// Type: uint8 Value: 5
+}
