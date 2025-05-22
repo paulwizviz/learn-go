@@ -1,35 +1,70 @@
-package ex2
+package ex3
 
-import "fmt"
+import (
+	"fmt"
+)
 
-// A Single method interface.
-// In this example we have an interface representing all things movable
-type Tracker interface {
-	Move(from, to string)
+type Thing interface {
+	DoSomething() string
+	SoundOut() string
 }
 
-// TrackerFunc is a function type that implements a Tracker interface
-type TrackerFunc func(string, string)
-
-// Move is a method of TrackerFunc
-func (m TrackerFunc) Move(from, to string) {
-	m(from, to)
+type Human struct {
+	Thing
 }
 
-// TrackMovementOf is an operation to track item using tracker
-func TrackMovementOf(item, from, to string, m Tracker) {
-	fmt.Print(item)
-	fmt.Print(" ")
-	m.Move(from, to)
-
+func Example_human() {
+	defer func() {
+		err := recover()
+		if err != nil { //catch
+			fmt.Printf("Runtime error: %v", err)
+		}
+	}()
+	var t Thing = Human{}
+	t.DoSomething()
+	t.SoundOut()
+	// Output:
+	// Runtime error: runtime error: invalid memory address or nil pointer dereference
 }
 
-func Example() {
-	var tracker TrackerFunc = func(from, to string) {
-		fmt.Printf("traveling from: %s to %s", from, to)
+type Person struct {
+	Thing
+}
+
+func (Person) DoSomething() string {
+	return "Walking"
+}
+func (Person) SoundOut() string {
+	return "Say Hello"
+}
+
+func Example_person() {
+	p := Person{}
+	fmt.Println(p.DoSomething())
+	fmt.Println(p.SoundOut())
+
+	// Output:
+	// Walking
+	// Say Hello
+}
+
+type Spanish struct {
+	Thing
+}
+
+func (s Spanish) SoundOut() string {
+	return "Ola"
+}
+
+func Example_spanish() {
+	s := Spanish{}
+	p := Person{
+		s,
 	}
-	TrackMovementOf("John", "a", "b", tracker)
+	fmt.Println(p.SoundOut())
+	fmt.Println(p.Thing.SoundOut())
 
-	// output:
-	// John traveling from: a to b
+	// Output:
+	// Say Hello
+	// Ola
 }

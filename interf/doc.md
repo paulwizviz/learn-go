@@ -8,12 +8,6 @@ Unlike other object-oriented progamming language, a Go interface does not requir
 
 Here is a [working example](./ex1/ex1_test.go).
 
-## Single method interfaces
-
-An interface with only one method signature, can be implemented by a struct with member methods and function types.
-
-Here is a [working example](./ex2/ex2_test.go).
-
 ## Embeded interface
 
 These examples demonstrate technique composition to overide behaviour.
