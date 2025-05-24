@@ -5,15 +5,15 @@ This repository contains working examples and links to learning materials on cor
 ## Core Features
 
 * Basic Types
-    * Boolean - type `bool` (`true` or `false`)
-    * [Float](./floattype/doc.md)
-    * [Integer](./integer/doc.md)
-    * [Iota](./iota/doc.md)
-    * [Strings and Rune](./str/doc.md)
+  * Boolean - type `bool` (`true` or `false`)
+  * [Float](./floattype/doc.md)
+  * [Integer](./integer/doc.md)
+  * [Iota](./iota/doc.md)
+  * [Strings and Rune](./str/doc.md)
 * Composite Types
-    * [Array and Slices](./slice/doc.md)
-    * [Map](./maps/doc.md)
-    * [Struct](./structs/doc.md)
+  * [Array and Slices](./slice/doc.md)
+  * [Map](./maps/doc.md)
+  * [Struct](./structs/doc.md)
 * [Concurrency](./concurrency/doc.md)
 * [Embedding Files](./embed/doc.md)
 * [Error Handling](./error/doc.md)
@@ -23,16 +23,17 @@ This repository contains working examples and links to learning materials on cor
 * [Memory management](./memory/doc.md)
 * [Project Managment](./projects/doc.md)
 * Standard libraries
-    * [Context](./context/doc.md)
-    * [Encoding](./encoding/doc.md)
-    * [io](./io/doc.md)
-    * [Logging](./logging/doc.md)
-    * [Networking](./networking/doc.md)
-    * [os](./os/doc.md)
-    * [Runtime](./runtime/doc.md)
-    * [Reflection](./reflection/doc.md)
-    * [Testing](./tests/doc.md)
-    * [Template](./templates/doc.md)
+  * [Context](./context/doc.md)
+  * [Encoding](./encoding/doc.md)
+  * [io](./io/doc.md)
+  * [Logging](./logging/doc.md)
+  * [Networking](./networking/doc.md)
+  * [os](./os/doc.md)
+  * [Runtime](./runtime/doc.md)
+  * [Reflection](./reflection/doc.md)
+  * [Testing](./tests/doc.md)
+  * [Time](./date/doc.md)
+  * [Template](./templates/doc.md)
 
 ## Advance Topics
 
@@ -48,5 +49,3 @@ This repository contains working examples and links to learning materials on cor
 ## Disclaimer
 
 The content in this project is intended for educational purpose only. It is constantly updated, items my be removed, and modified without warning.
-
-
