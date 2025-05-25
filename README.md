@@ -37,7 +37,7 @@ This repository contains working examples and links to learning materials on cor
 
 ## Advance Topics
 
-* [Advance Go Programming](https://github.com/paulwizviz/advance-go)
+* [Advance Go Programming](https://github.com/paulwizviz/advanced-go)
 * [Algorithm and data models](https://github.com/paulwizviz/go-algorithm)
 
 ## References
