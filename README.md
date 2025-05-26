@@ -12,8 +12,9 @@ This repository contains working examples and links to learning materials on cor
   * [Strings and Rune](./str/doc.md)
 * Composite Types
   * [Array and Slices](./slice/doc.md)
+  * [Interface](./interf/doc.md)
   * [Map](./maps/doc.md)
-  * [Struct](./structs/doc.md)
+  * [Structs](./structs/doc.md)
 * [Concurrency](./concurrency/doc.md)
 * [Embedding Files](./embed/doc.md)
 * [Error Handling](./error/doc.md)
