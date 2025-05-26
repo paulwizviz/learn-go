@@ -83,6 +83,34 @@ type Wrapper interface {
 }
 ```
 
+## Implement Any Types by Interfaces
+
+Any Go types can be implement an Go interfaces. You can implement methods against:
+
+* Alias native types like `int`, `float32`, etc
+* Struct types
+* Function types
+
+Here is a [working example](./implement_test.go).
+
+## Grouping Types by Interfaces
+
+We can use interfaces group types by methods. For example, we could define aggregate types by interface.
+
+Here is the [working example](./grouping_test.go).
+
+## Embedding Interfaces
+
+Embedding an interface in a struct is a way to delegate method calls to a concrete implementation of that interface. However, embedding interfaces in structs is **not** idiomatic in Go. The preferred approach is to define interfaces where they are needed, usually on the **consumer** side.
+
+There are some cases where embedding an interface might be acceptable:
+
+* If you’re writing a framework or middleware layer, and want to provide default forwarding behavior.
+* If you are building decorators/wrappers where forwarding is natural.
+* In tests, to simplify mock composition.
+
+But even in those cases, named fields are usually clearer.
+
 ## References
 
-* [What Makes Golang Go: The Power of Go Interfaces — Ricardo Gerardi](https://www.youtube.com/watch?v=TRoRluGIixs
+* [What Makes Golang Go: The Power of Go Interfaces — Ricardo Gerardi](https://www.youtube.com/watch?v=TRoRluGIixs)
