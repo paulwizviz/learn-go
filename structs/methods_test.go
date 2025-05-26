@@ -2,68 +2,74 @@ package structs
 
 import "fmt"
 
-type Dog struct {
+// Number is an alias for float64
+type Number float64
+
+func (n Number) Increment() {
+	n++ // This will not mutate original value
+}
+
+// Pointer type receiver to mutate underlying value
+func (n *Number) IncreaseWith(num Number) {
+	*n = *n + num //
+}
+
+func Example_number() {
+	var n Number = 1.234
+	fmt.Println("Original value: ", n)
+
+	n.Increment()
+	fmt.Println("After increment: ", n)
+
+	n.IncreaseWith(4.0)
+	fmt.Println("Increase by 4.0: ", n)
+
+	var n1 *Number = &n
+	n.IncreaseWith(10.00)
+	fmt.Println("Increase by 10.00", *n1)
+
+	// Output:
+	// Original value:  1.234
+	// After increment:  1.234
+	// Increase by 4.0:  5.234
+	// Increase by 10.00 15.234
+}
+
+// Person represents a person entity
+type Person struct {
 	name string
 }
 
-func (d *Dog) SetName(n string) {
-	d.name = n
+func (p Person) Name() string {
+	return p.name
 }
 
-func (d Dog) Name() string {
-	return d.name
+func (p *Person) SetName(name string) {
+	p.name = name
 }
 
-func Example_dog() {
-	d1 := Dog{
+func Example_person() {
+	p1 := &Person{
 		name: "bob",
 	}
-	fmt.Println(d1.Name())
-	d1.SetName("b")
-	fmt.Println(d1.Name())
 
-	d2 := &Dog{
-		name: "skippy",
+	fmt.Println(p1)
+
+	p1.SetName("alice")
+	fmt.Println(p1.Name())
+
+	p2 := Person{
+		name: "charlie",
 	}
-	fmt.Println(d2.Name())
-	d2.SetName("s")
-	fmt.Println(d2.Name())
+
+	fmt.Println(p2)
+
+	p2.SetName("delta")
+	fmt.Println(p2.Name())
 
 	// Output:
-	// bob
-	// b
-	// skippy
-	// s
-}
-
-type Cat struct {
-	name string
-}
-
-func (c Cat) Name() string {
-	return c.name
-}
-
-// This is a syntatic sugar for this
-// func SetName(c *Cat, n string)
-func (c *Cat) SetName(n string) {
-	c = nil // This is unlikely scenario but the compiler does not pick this up.
-	c.name = n
-}
-
-func Example_cat() {
-	defer func() {
-		err := recover()
-		fmt.Println(err)
-	}()
-
-	c := &Cat{
-		name: "cat",
-	}
-	fmt.Println(c.Name())
-	c.SetName("b")
-
-	// Output:
-	// cat
-	// runtime error: invalid memory address or nil pointer dereference
+	// &{bob}
+	// alice
+	// {charlie}
+	// delta
 }

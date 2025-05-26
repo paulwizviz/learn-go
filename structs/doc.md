@@ -1,17 +1,17 @@
-# Struct types
+# Struct
 
-A a struct type is a collection of primitive, struct types and function types as fields. A struct may also include [member methods](https://go101.org/article/method.html).
- 
-## Equality
+A **struct** is a composite type that groups together variables (called fields) under a single name. You can also assign a method against a struct.
 
-[Example of equality](./equality_test.go)
+## A Method
 
-## Embedded struct
+A **method** is a function that is associated with a specific type—either a struct or a named type. The key components of a method are:
 
-You can embed a struct within a struct. Here is a [working example](./embedded_test.go)
+* reciever typea
+* method name
+* method argument and return types
 
-## Member method
+## Working Examples
 
-A member method of a struct is a syntatic sugar for a normal function.
-
-Here is a [working example](./methods_test.go)
+* [Equality](./struct_equality_test.go)
+* [Embedded](./struct_embedded_test.go)
+* [Member methods](./struct_methods_test.go)
