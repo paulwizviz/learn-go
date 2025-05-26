@@ -35,21 +35,21 @@ func Example_number() {
 	// Increase by 10.00 15.234
 }
 
-// Person represents a person entity
-type Person struct {
+// Human represents a person entity
+type Human struct {
 	name string
 }
 
-func (p Person) Name() string {
+func (p Human) Name() string {
 	return p.name
 }
 
-func (p *Person) SetName(name string) {
+func (p *Human) SetName(name string) {
 	p.name = name
 }
 
-func Example_person() {
-	p1 := &Person{
+func Example_human() {
+	p1 := &Human{
 		name: "bob",
 	}
 
@@ -58,7 +58,7 @@ func Example_person() {
 	p1.SetName("alice")
 	fmt.Println(p1.Name())
 
-	p2 := Person{
+	p2 := Human{
 		name: "charlie",
 	}
 
@@ -72,4 +72,82 @@ func Example_person() {
 	// alice
 	// {charlie}
 	// delta
+}
+
+type Person struct {
+	Firstname string
+	Surname   string
+}
+
+// String is an implementation of Stringer interface method
+func (p Person) String() string {
+	return fmt.Sprintf("Firstname: %s Surname: %s", p.Firstname, p.Surname)
+}
+
+func Example_person() {
+	p := Person{
+		Firstname: "John",
+		Surname:   "Doe",
+	}
+
+	fmt.Println(p)
+
+	// Output:
+	// Firstname: John Surname: Doe
+}
+
+type Address struct {
+	Street string
+}
+
+type PersonAddress struct {
+	Person
+	Address
+}
+
+func Example_personAddress() {
+	pa := PersonAddress{
+		Person{
+			Firstname: "John",
+			Surname:   "Doe",
+		},
+		Address{
+			Street: "First street",
+		},
+	}
+
+	fmt.Println(pa) // The Person String() method will be called
+
+	// Output:
+	// Firstname: John Surname: Doe
+}
+
+type Location struct {
+	LocationID string
+}
+
+type PersonLocation struct {
+	Person
+	Location
+}
+
+func (p PersonLocation) String() string {
+	return fmt.Sprintf("Person: %s %s is in location: %s", p.Firstname, p.Surname, p.LocationID)
+}
+
+func Example_personLocation() {
+	pl := PersonLocation{
+		Person{
+			Firstname: "John",
+			Surname:   "Doe",
+		},
+		Location{
+			LocationID: "ID-1234",
+		},
+	}
+
+	fmt.Println(pl)
+
+	// Output:
+	// Person: John Doe is in location: ID-1234
 }
