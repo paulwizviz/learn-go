@@ -1,4 +1,4 @@
-package ex3
+package interf
 
 import (
 	"fmt"

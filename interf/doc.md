@@ -1,20 +1,88 @@
-# Interfaces
+# Interface
 
-A Golang interface is a custon type from a collection of method signatures. It specifies the behavoiour but does not implement a type.
+An **interface** is a type that specifies method signatures. Any type that implements those methods is said to **satisfy** the interface.
 
-## Implementation
+## Single Method Interfaces
 
-Unlike other object-oriented progamming language, a Go interface does not require explicit implementation type. A variable of a given interface can receive any struct or function types that implicitly implemented all method signatures of the interface.
+A single method interface is an interface with a single method.
 
-Here is a [working example](./ex1/ex1_test.go).
+Why use single method interface?
 
-## Embeded interface
+* They’re perfect for mocking, decoupling, and interface-based design.
+* Go’s idiomatic use of interfaces encourages “small interfaces”, often with just one method.
 
-These examples demonstrate technique composition to overide behaviour.
+| Benefit | Why It Matters |
+| --- | --- |
+| Loose coupling | Use only what you need |
+| Composability | Build bigger interfaces from small ones |
+| Easier testing | Mocks are quick and isolated |
+| Implicit satisfaction | Less boilerplate |
+| Cleaner APIs | Smaller, more focused contracts |
 
-Here is a [working example](./ex3/ex3_test.go)
+There are a number of single method interfaces in the standard library.
 
-## Useful references
+### `io` packages
 
-* [What Makes Golang Go: The Power of Go Interfaces — Ricardo Gerardi](https://www.youtube.com/watch?v=TRoRluGIixs)
-* [Ardan Labs - interfaces 101](https://www.youtube.com/watch?v=34ZmIfWOb0U&list=PLADD_vxzPcZB595tXmu540KC6MTMqIndB)
+```go
+type Writer interface {
+    Write(p []byte) (n int, err error)
+}
+```
+
+```go
+type Reader interface {
+    Read(p []byte) (n int, err error)
+}
+```
+
+```go
+type Closer interface {
+    Close() error
+}
+```
+
+```go
+type Seeker interface {
+    Seek(offset int64, whence int) (int64, error)
+}
+```
+
+```go
+type ByteReader interface {
+    ReadByte() (byte, error)
+}
+```
+
+```go
+type ByteWriter interface {
+    WriteByte(c byte) error
+}
+```
+
+### `fmt` package
+
+```go
+type Stringer interface {
+    String() string
+}
+```
+
+### `net/http` package
+
+```go
+type Handler interface {
+    ServeHTTP(w http.ResponseWriter, r *http.Request)
+}
+```
+
+### `errors` package
+
+```go
+type Wrapper interface {
+    Unwrap() error
+}
+```
+
+## References
+
+* [What Makes Golang Go: The Power of Go Interfaces — Ricardo Gerardi](https://www.youtube.com/watch?v=TRoRluGIixs
