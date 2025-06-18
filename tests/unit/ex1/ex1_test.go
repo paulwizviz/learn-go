@@ -1,60 +1,68 @@
 package ex1
 
 import (
+	"fmt"
 	"testing"
 )
 
-func TestFizzBuzz(t *testing.T) {
-	testcases := []struct {
-		input       uint
-		expected    string
-		description string
+var (
+	testcases = []struct {
+		input    int
+		expected string
 	}{
 		{
-			input:       0,
-			expected:    "0",
-			description: "Expected: 0 Actual: ",
+			input:    0,
+			expected: "0",
 		},
 		{
-			input:       1,
-			expected:    "1",
-			description: "Expected: 1 Actual: ",
+			input:    1,
+			expected: "1",
 		},
 		{
-			input:       2,
-			expected:    "2",
-			description: "Expected: 2 Actual: ",
+			input:    2,
+			expected: "2",
 		},
 		{
-			input:       3,
-			expected:    "Fizz",
-			description: "Expected: Fizz Actual: ",
+			input:    3,
+			expected: "Fizz",
 		},
 		{
-			input:       5,
-			expected:    "Buzz",
-			description: "Expected: Buzz Actual: ",
+			input:    5,
+			expected: "Buzz",
 		},
 		{
-			input:       6,
-			expected:    "Fizz",
-			description: "Expected: Fizz Actual: ",
+			input:    6,
+			expected: "Fizz",
 		},
 		{
-			input:       12,
-			expected:    "Fizz",
-			description: "Expected: Fizz Actual: ",
+			input:    12,
+			expected: "Fizz",
 		},
 		{
-			input:       15,
-			expected:    "Fizz Buzz",
-			description: "Expected: Fizz Buzz Actual: ",
+			input:    15,
+			expected: "FizzBuzz",
 		},
 	}
+)
+
+func TestFizzBuzz(t *testing.T) {
 	for i, tc := range testcases {
-		actual := fizzbuzz(tc.input)
-		if tc.expected != actual {
-			t.Fatalf("Case: %v - %v %v", i, tc.description, actual)
-		}
+		t.Run(fmt.Sprintf("case %v", i), func(t *testing.T) {
+			actual := fizzBuzz(tc.input)
+			if tc.expected != actual {
+				t.Fatalf("Expected: %v Actual: %v", tc.expected, actual)
+			}
+		})
+	}
+}
+
+func TestFizzBuzzBoolean(t *testing.T) {
+	for i, tc := range testcases {
+		t.Run(fmt.Sprintf("case %v", i), func(t *testing.T) {
+			actual := fizzBuzzBooleans(tc.input)
+			if tc.expected != actual {
+				t.Fatalf("Expected: %v Actual: %v", tc.expected, actual)
+			}
+		})
 	}
 }
