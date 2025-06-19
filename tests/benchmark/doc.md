@@ -1,8 +1,8 @@
 # Benchmarking
 
-* This is an example of [basic setup](./benchmark/ex1/oneoff_test.go).
-* This is an example of a [scenario based setup](./benchmark/ex2/scenarios_test.go).
-* This is example of [benchmarking via main package](../examples/benchmark/ex3/main.go), demonstrate benchmarking via main package.
+* This is an example of [basic setup](./ex1/oneoff_test.go).
+* This is an example of a [scenario based setup](./ex2/scenarios_test.go).
+* This is example of [benchmarking via main package](./ex3/main.go), demonstrate benchmarking via main package.
 
 ## References
 
