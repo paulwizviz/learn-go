@@ -74,10 +74,17 @@ func Example_hexint() {
 
 func Example_hexfloat() {
 	f := 1.74e2
-	fmt.Printf("%T Decimal: %v Hex: %X\n", f, f, f)
+	f1 := -174.0
+	f2 := 1.1743 - 2
+
+	fmt.Printf("f %T Decimal: %v Hex: %X\n", f, f, f)
+	fmt.Printf("f1 %T Decimal: %v Hex: %X\n", f1, f1, f1)
+	fmt.Printf("f2 %T Decimal: %v Hex: %X\n", f2, f2, f2)
 
 	// Output:
-	// float64 Decimal: 174 Hex: 0X1.5CP+07
+	// f float64 Decimal: 174 Hex: 0X1.5CP+07
+	// f1 float64 Decimal: -174 Hex: -0X1.5CP+07
+	// f2 float64 Decimal: -0.8257 Hex: -0X1.A6C226809D495P-01
 }
 
 func Example_printhex() {

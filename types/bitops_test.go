@@ -16,9 +16,9 @@ func Example_bitwiseAND() {
 }
 
 func Example_bitwiseOR() {
-	// | bitwise OR
 
-	fmt.Printf("0b01 | 0b01 = %x\n", 0b01|0b01)
+	// | bitwise OR
+	fmt.Printf("0b01 | 0b01 = %x\n", 0b01&0b01)
 	fmt.Printf("0b01 | 0b00 = %x\n", 0b01|0b00)
 	fmt.Printf("0b00 | 0b00 = %x\n", 0b00|0b00)
 

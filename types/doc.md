@@ -6,7 +6,9 @@ In this section of our journal, we turn our focus to the fundamentals: Go's basi
 * [Bitwise Operators](#bitwise-operators)
 * [Byte](#byte)
 * [Float](#float)
+* [Function](#function)
 * [Integer](#integer)
+* [Maps](#map)
 * [Octal](#octal)
 * [Hexadecimal](#hexadecimal)
 * [Rune](#rune)
@@ -44,6 +46,12 @@ For the `byte` keyword our initial thought was that it might be a distinct type,
 
 For **floating-point** numbers, our observations focused on values that are not whole. We found that Go appears to provide two main types, `float32` and `float64`. We concluded that `float64` is the default, as it's the most commonly used unless memory conservation is a specific goal. Our investigation of float literals showed they are straightforward, supporting decimal points and `e` or `E` for exponent notation. Our findings are documented in the [working example](./float_test.go).
 
+## Function
+
+Our investigation then led us to the **function** type. We observed that functions in Go are first-class citizens, which means they can be treated like any other value—assigned to variables, passed as arguments to other functions, or even returned from them. We concluded that this flexibility is a cornerstone of Go's design, enabling powerful patterns like higher-order functions.
+
+Our findings are documented in the [working example](./funcs_test.go).
+
 ## Integer
 
 For **integers**, our initial observation was that they represent whole numbers, with a literal being a simple sequence of digits like `123`.
@@ -58,6 +66,16 @@ Our findings on this breakdown are as follows:
 * **64-bit:** `int64` or `uint64`
 
 These observations are documented in our [working examples](./integer_test.go).
+
+## Map
+
+Our investigation into the **map** type revealed it to be a versatile tool for managing key-value data. We observed that it is an unordered collection where each element is accessed via a unique key. It appeared that the keys all belong to one type, while the elements (or values) belong to another. We also noted that an uninitialised map holds a `nil` value, making it essential to initialise it before use. Our findings are documented in the [working example](./maps_test.go).
+
+We also found these external resources to be insightful:
+
+* [Inspecting the map header in Golang](https://www.youtube.com/watch?v=fe_omYMdnKY)
+* [Internals of Maps in Golang](https://www.youtube.com/watch?v=ACQs6mdylxo)
+* [Maps in Golang | Intermediate level](https://www.youtube.com/watch?v=1LnzCtcfsFc)
 
 ## Octal
 

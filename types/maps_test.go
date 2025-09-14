@@ -1,4 +1,4 @@
-package maps
+package types
 
 import (
 	"fmt"
@@ -7,6 +7,7 @@ import (
 func Example_simpleMap() {
 	data := map[string]int{"A": 123, "B": 456}
 	fmt.Println(data["A"])
+
 	// Output:
 	// 123
 }
@@ -16,6 +17,7 @@ func Example_makeMap() {
 	fmt.Println(len(data))
 	data["A"] = 1234
 	fmt.Println(data["A"])
+
 	// Output:
 	// 0
 	// 1234
@@ -26,6 +28,7 @@ func Example_deleteMapItem() {
 	fmt.Println(len(data))
 	delete(data, "A")
 	fmt.Println(len(data))
+
 	// Output:
 	// 2
 	// 1
@@ -67,6 +70,7 @@ func Example_rangingMaps() {
 			fmt.Println("Key not found")
 		}
 	}
+
 	// Output:
 	// 1234
 	// A
