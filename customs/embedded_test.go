@@ -1,4 +1,4 @@
-package interf
+package customs
 
 import (
 	"fmt"
@@ -9,37 +9,37 @@ type Thing interface {
 	SoundOut() string
 }
 
-type Human struct {
+type LivingThing struct {
 	Thing
 }
 
-func Example_human() {
+func Example_livingThing() {
 	defer func() {
 		err := recover()
 		if err != nil { //catch
 			fmt.Printf("Runtime error: %v", err)
 		}
 	}()
-	var t Thing = Human{}
+	var t Thing = LivingThing{}
 	t.DoSomething()
 	t.SoundOut()
 	// Output:
 	// Runtime error: runtime error: invalid memory address or nil pointer dereference
 }
 
-type Person struct {
+type HumanBeing struct {
 	Thing
 }
 
-func (Person) DoSomething() string {
+func (HumanBeing) DoSomething() string {
 	return "Walking"
 }
-func (Person) SoundOut() string {
+func (HumanBeing) SoundOut() string {
 	return "Say Hello"
 }
 
-func Example_person() {
-	p := Person{}
+func Example_humanBeing() {
+	p := HumanBeing{}
 	fmt.Println(p.DoSomething())
 	fmt.Println(p.SoundOut())
 
@@ -48,17 +48,17 @@ func Example_person() {
 	// Say Hello
 }
 
-type Spanish struct {
+type SpanishIndividual struct {
 	Thing
 }
 
-func (s Spanish) SoundOut() string {
+func (s SpanishIndividual) SoundOut() string {
 	return "Ola"
 }
 
-func Example_spanish() {
-	s := Spanish{}
-	p := Person{
+func Example_spanishIndividual() {
+	s := SpanishIndividual{}
+	p := HumanBeing{
 		s,
 	}
 	fmt.Println(p.SoundOut())

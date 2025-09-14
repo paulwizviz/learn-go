@@ -1,4 +1,4 @@
-package interf
+package customs
 
 import "fmt"
 

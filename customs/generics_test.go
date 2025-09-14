@@ -1,4 +1,4 @@
-package generics
+package customs
 
 import (
 	"fmt"
@@ -66,7 +66,7 @@ func NewCollection[N Number](items []N) *Collection[N] {
 	}
 }
 
-func Example_struct() {
+func Example_genericCollection() {
 	ci := NewCollection([]int{1, 2, 3})
 	result1 := ci.Length()
 	fmt.Println(result1)

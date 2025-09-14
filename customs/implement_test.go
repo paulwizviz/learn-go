@@ -1,4 +1,4 @@
-package interf
+package customs
 
 import "fmt"
 
@@ -6,13 +6,13 @@ type Printer interface {
 	Print()
 }
 
-// Number is an alias for int type
+// Numeric is an alias for int type
 // with a method to inplement printer
 // interface.
-type Number int
+type Numeric int
 
-func (n Number) Print() {
-	fmt.Printf("Number value: %v\n", n)
+func (a Numeric) Print() {
+	fmt.Printf("Numeric value: %v\n", a)
 }
 
 // PrintableType is a struct with
@@ -40,7 +40,7 @@ func PrintServices(p Printer) {
 
 func Example_interfaceImpt() {
 
-	var n Number = 1_000
+	var n Numeric = 1_000
 	PrintServices(n)
 
 	p := PrintableType{

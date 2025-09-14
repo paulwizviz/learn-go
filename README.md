@@ -8,7 +8,8 @@ Please think of these as our shared field notes, not as definitive statements on
 
 ## Topics
 
-* [Types](./types/doc.md)
+* [Basic Types](./types/doc.md)
+* [Custom Types](./customs/doc.md)
 
 ## References
 

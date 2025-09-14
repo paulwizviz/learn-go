@@ -1,21 +1,21 @@
-package structs
+package customs
 
 import "fmt"
 
-// Number is an alias for float64
-type Number float64
+// FloatNumber is an alias for float64
+type FloatNumber float64
 
-func (n Number) Increment() {
+func (n FloatNumber) Increment() {
 	n++ // This will not mutate original value
 }
 
 // Pointer type receiver to mutate underlying value
-func (n *Number) IncreaseWith(num Number) {
+func (n *FloatNumber) IncreaseWith(num FloatNumber) {
 	*n = *n + num //
 }
 
-func Example_number() {
-	var n Number = 1.234
+func Example_floatNumber() {
+	var n FloatNumber = 1.234
 	fmt.Println("Original value: ", n)
 
 	n.Increment()
@@ -24,7 +24,7 @@ func Example_number() {
 	n.IncreaseWith(4.0)
 	fmt.Println("Increase by 4.0: ", n)
 
-	var n1 *Number = &n
+	var n1 *FloatNumber = &n
 	n.IncreaseWith(10.00)
 	fmt.Println("Increase by 10.00", *n1)
 
