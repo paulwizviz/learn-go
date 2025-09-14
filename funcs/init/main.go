@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/paulwizviz/learn-go/funcs/init/sandbox"
+	"learn-go/funcs/init/sandbox"
 )
 
 var _ int = generateInt()

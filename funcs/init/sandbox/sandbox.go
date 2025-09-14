@@ -3,7 +3,7 @@ package sandbox
 import (
 	"log"
 
-	"github.com/paulwizviz/learn-go/funcs/init/depend"
+	"learn-go/funcs/init/depend"
 )
 
 var _ int = generateInt()

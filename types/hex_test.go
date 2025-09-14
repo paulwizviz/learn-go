@@ -1,4 +1,4 @@
-package integer
+package types
 
 import "fmt"
 
@@ -72,6 +72,14 @@ func Example_hexint() {
 	// Min int8 Hex: -80 Decimal: -128
 }
 
+func Example_hexfloat() {
+	f := 1.74e2
+	fmt.Printf("%T Decimal: %v Hex: %X\n", f, f, f)
+
+	// Output:
+	// float64 Decimal: 174 Hex: 0X1.5CP+07
+}
+
 func Example_printhex() {
 
 	i := 11
@@ -83,6 +91,7 @@ func Example_printhex() {
 	fmt.Printf("%08X", h)
 
 	// Output:
+	// float64 Decimal: 174 Hex: 0X1.5CP+07
 	// Lower: b Upper: B
 	// Lower: abcdef Upper: ABCDEF
 	//   ABCDEF

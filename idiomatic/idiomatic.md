@@ -1,8 +1,8 @@
 # Idiomatic Go
 
-What is idomatic Go? 
+What is idomatic Go?
 
-Go code that is idiomatic adheres to three of the main design principles of the Go language (Edward Muller)[https://about.sourcegraph.com/blog/go/idiomatic-go]:
+Go code that is idiomatic adheres to three of the main design principles of the Go language [Edward Muller](https://about.sourcegraph.com/blog/go/idiomatic-go):
 
 * Orthogonality - interchangeable parts with no to mimumal effect on other parts
 * Simplicity

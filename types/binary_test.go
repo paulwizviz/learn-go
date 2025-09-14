@@ -1,4 +1,4 @@
-package integer
+package types
 
 import (
 	"fmt"
@@ -12,11 +12,11 @@ func Example_binary() {
 	var b3 int8 = -0b10000000
 	var b4 int8 = 0b01111111
 
-	fmt.Printf("%d\n", b)
-	fmt.Printf("%d\n", b1)
-	fmt.Printf("%d\n", b2)
-	fmt.Printf("%d\n", b3)
-	fmt.Printf("%d\n", b4)
+	fmt.Printf("%v\n", b)
+	fmt.Printf("%v\n", b1)
+	fmt.Printf("%v\n", b2)
+	fmt.Printf("%v\n", b3)
+	fmt.Printf("%v\n", b4)
 
 	// Output:
 	// 2

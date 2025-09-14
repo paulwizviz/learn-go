@@ -1,10 +1,10 @@
-package floattype
+package types
 
 import (
 	"fmt"
 )
 
-func Example_literal() {
+func Example_float() {
 	f := .0
 	f1 := 6.67428e-11
 	f2 := 106.23451
@@ -15,7 +15,7 @@ func Example_literal() {
 	fmt.Printf("f1 %T %v\n", f1, f1)
 	fmt.Printf("f2 %T %v\n", f2, f2)
 	fmt.Printf("f3 %T %v\n", f3, f3)
-	fmt.Printf("f4 %T %v", f4, f4)
+	fmt.Printf("f4 %T %v\n", f4, f4)
 
 	// Output:
 	// f float64 0.000000
@@ -49,18 +49,16 @@ func Example_float64() {
 	// f64 min float64 -169999999999999993883079578865998174333346074304075874502773119193537729178160565864330091787584707988572262467983188919169916105593357174268369962062473635296474636515660464935663040684957844303524367815028553272712298986386310828644513212353921123253311675499856875650512437415429217994623324794855339589632.000000
 }
 
-func Example_hex() {
-	f := 1.74e2
-	f1 := 122.4375
+func Example_printFloat() {
 
-	fmt.Printf("%T Decimal: %v Hex: %X\n", f, f, f)
-	fmt.Printf("%f\n", f1)
-	fmt.Printf("%0.3f\n", f1)
-	fmt.Printf("%10f\n", f1)
-	fmt.Printf("%10.2f\n", f1) // This will fill up all 10 spaces and pack left with unicode space
+	f := 122.4375
+
+	fmt.Printf("%f\n", f)
+	fmt.Printf("%0.3f\n", f)
+	fmt.Printf("%10f\n", f)
+	fmt.Printf("%10.2f\n", f) // This will fill up all 10 spaces and pack left with unicode space
 
 	// Output:
-	// float64 Decimal: 174 Hex: 0X1.5CP+07
 	// 122.437500
 	// 122.438
 	// 122.437500
