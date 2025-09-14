@@ -9,6 +9,7 @@ Please think of these as our shared field notes, not as definitive statements on
 ## Topics
 
 * [Basic Types](./types/doc.md)
+* [Context](./context/doc.md)
 * [Custom Types](./customs/doc.md)
 
 ## References
