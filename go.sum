@@ -1,0 +1,4 @@
+github.com/paulwizviz/learn-go v0.0.0-20250922191459-42db0725eb2a h1:1GDgB0lr9LKJ/+qOkBGN7xbMj/7BXIT6/UZFUNBaW2M=
+github.com/paulwizviz/learn-go v0.0.0-20250922191459-42db0725eb2a/go.mod h1:2fbitXOa7/fZGN7k5fjVe1bvXItT4zLGfyrNn0TtB3A=
+golang.org/x/exp v0.0.0-20250911091902-df9299821621 h1:2id6c1/gto0kaHYyrixvknJ8tUK/Qs5IsmBtrc+FtgU=
+golang.org/x/exp v0.0.0-20250911091902-df9299821621/go.mod h1:TwQYMMnGpvZyc+JpB/UAuTNIsVJifOlSkrZkhcvpVUk=

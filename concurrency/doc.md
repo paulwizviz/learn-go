@@ -4,9 +4,12 @@ A concurrent program is made up of code blocks that can run at the same time (se
 
 There are three basic elements of Go concurrency:
 
-* [Channels](#channels)
-* [Goroutine](#goroutines)
-* [Waitgroup](#waitgroup)
+- [Concurrency](#concurrency)
+  - [Channels](#channels)
+  - [Goroutines](#goroutines)
+  - [Waitgroup](#waitgroup)
+  - [Concurrency patterns](#concurrency-patterns)
+  - [References](#references)
 
 ## Channels
 
@@ -33,8 +36,8 @@ Please refer to [GitHub repository for examples](https://github.com/paulwizviz/g
 
 ## References
 
-* Matt Kodvb
-    * [Go Class: 22 What is Concurrency?](https://www.youtube.com/watch?v=A3R-4ZYBqvE&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
-    * [Go Class: 23 CSP, Goroutines, and Channels](https://www.youtube.com/watch?v=zJd7Dvg3XCk&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
-    * [Go Class: 24 Select](https://www.youtube.com/watch?v=tG7gII0Ax0Q&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
-    * [Go Class: 26 Channels in Detail](https://www.youtube.com/watch?v=fCkxKGd6CVQ&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+- Matt Kodvb
+  - [Go Class: 22 What is Concurrency?](https://www.youtube.com/watch?v=A3R-4ZYBqvE&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+  - [Go Class: 23 CSP, Goroutines, and Channels](https://www.youtube.com/watch?v=zJd7Dvg3XCk&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+  - [Go Class: 24 Select](https://www.youtube.com/watch?v=tG7gII0Ax0Q&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+  - [Go Class: 26 Channels in Detail](https://www.youtube.com/watch?v=fCkxKGd6CVQ&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)

@@ -1,5 +1,5 @@
 # Testing
 
 * [Unit testing](./unit/doc.md)
-* [Bench marking](./benchmark/doc.md)
-* [Fuzzy Testing](./fuzz/doc.md)
+* [Benchmarking](./benchmark/doc.md)
+* [Fuzz Testing](./fuzz/doc.md)

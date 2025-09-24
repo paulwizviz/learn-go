@@ -1,16 +1,23 @@
-# Learn Go: Our Notes on a Language as It Evolves
+# Learn Go: My Notes on a Language as It Evolves
 
-Welcome to our collective journal. This is a living journal where we, [contributors](./CONTRIBUTORS) to this project, document our journey as we follow the evolution of the Go programming language.
+Welcome to my personal journal. This is a living document where I, with the help of [contributors](./CONTRIBUTORS), document my journey as I follow the evolution of the Go programming language.
 
-Inside, you'll find notes and working examples based on our observations of Go's evolution. We've organised these findings on a thematic basis.
+Inside, you'll find my notes and working examples based on my observations of Go's evolution. I've organised these findings on a thematic basis.
 
-Please think of these as our shared field notes, not as definitive statements on the language itself.
+Please think of these as my shared field notes, not as definitive statements on the language itself.
 
 ## Topics
 
 * [Basic Types](./types/doc.md)
+* [Concurrency](./concurrency/doc.md)
+* Concepts
+  * [Idiomatic](./concepts/idiomatic.md)
+  * [Memory Management](./concepts/memory.md)
 * [Context](./context/doc.md)
 * [Custom Types](./customs/doc.md)
+* [Embedding](./embed/doc.md)
+* [Templates](./templates/doc.md)
+* [Tests](./tests/doc.md)
 
 ## References
 
@@ -20,7 +27,7 @@ Please think of these as our shared field notes, not as definitive statements on
 
 ## Disclaimer
 
-The content in this project is intended for educational purpose only. It is constantly updated, items my be removed, and modified without warning.
+The content in this project is intended for educational purposes only. It is constantly updated, items may be removed, and modified without warning.
 
 ## Licence
 
