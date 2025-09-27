@@ -8,16 +8,18 @@ Please think of these as my shared field notes, not as definitive statements on 
 
 ## Topics
 
-* [Basic Types](./types/doc.md)
-* [Concurrency](./concurrency/doc.md)
-* Concepts
-  * [Idiomatic](./concepts/idiomatic.md)
+* Core Concepts
+  * [Basic Types](./types/doc.md)
+  * [Custom Types](./customs/doc.md)
+  * [Concurrency](./concurrency/doc.md)
   * [Memory Management](./concepts/memory.md)
-* [Context](./context/doc.md)
-* [Custom Types](./customs/doc.md)
-* [Embedding](./embed/doc.md)
-* [Templates](./templates/doc.md)
-* [Tests](./tests/doc.md)
+
+* Patterns & Practices
+  * [Context](./stdlib/context/doc.md)
+  * [Embedding](./embed/doc.md)
+  * [Idiomatic Go](./concepts/idiomatic.md)
+  * [Templates](./templates/doc.md)
+  * [Tests](./tests/doc.md)
 
 ## References
 

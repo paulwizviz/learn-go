@@ -1,62 +1,48 @@
-# What is Idiomatic Go?
+# Idiomatic Go
 
-Idiomatic Go refers to the set of conventions, best practices, and common patterns that Go programmers use to write clear, simple, and efficient code. It's about following the "Go way" of doing things, prioritizing readability and maintainability over clever or complex solutions.
+My research into Go has led me to focus on the concept of "idiomatic" coding.
+This refers to a style of programming that is natural and conventional within a
+specific language. Essentially, idiomatic Go is about writing code that looks and feels like it belongs in the Go ecosystem—code that's straightforward, performant, and easy for other Gophers to read and contribute to.
 
-## Key Principles of Idiomatic Go
+Here are some of my observations.
 
-* **Simplicity:** Go's language features are minimalist. Idiomatic Go embraces this by avoiding overly complex designs, deep inheritance hierarchies, or heavy use of generics. The code should be easy to read and understand without a lot of mental overhead.
+## Simplicity
 
-* **Explicit Error Handling:** Go doesn't use exceptions. Idiomatic Go code explicitly checks for errors using the if err != nil pattern. This makes error paths clear and forces the developer to handle them gracefully.
+Idiomatic Go embraces this by avoiding overly complex designs, deep inheritance hierarchies, or heavy use of generics. The code should be easy to read and understand without a lot of mental overhead.
 
-* **Concurrency:** Go's built-in concurrency model (goroutines and channels) is central to the language. Idiomatic Go uses these features to write concurrent programs that are easy to reason about and free from data races. The philosophy is "Don't communicate by sharing memory; share memory by communicating."
+## Explicit Error Handling
 
-* **Naming Conventions:** Naming is crucial for readability. Idiomatic Go uses CamelCase for exported identifiers (public) and snake_case for unexported ones (private). Variable names are often short and descriptive (e.g., i for a loop index, r for a reader).
+Go doesn't use exceptions. Idiomatic Go code explicitly checks for errors using the if err != nil pattern. This makes error paths clear and forces the developer to handle them gracefully.
 
-* **Package Layout:** The file system structure defines packages. Idiomatic Go keeps packages small, focused, and well-named. A package should do one thing and do it well.
+## Concurrency
 
-* **Interfaces:** Idiomatic Go favors composition over inheritance and uses small, single-method interfaces. Instead of a class inheriting behavior, a Go struct implements an interface by simply having the required method. This promotes loose coupling and flexible design.
+Go's built-in concurrency model (goroutines and channels) is central to the language. Idiomatic Go uses these features to write concurrent programs that are easy to reason about and free from data races. The philosophy is "Don't communicate by sharing memory; share memory by communicating."
 
-Essentially, idiomatic Go is about writing code that looks and feels like it belongs in the Go ecosystem—code that's straightforward, performant, and easy for other Gophers to read and contribute to.
+Refer to my [concurrency programming example](../concurrency/doc.md).
 
-## Go Modules and Packages
+## Naming Conventions
 
-In Go, the two primary components for organising code are **modules** and **packages**. Understanding their relationship is fundamental to structuring a project idiomatically.
+Idiomatic Go uses `CamelCase` for exported identifiers (public) and `camelCase` for unexported ones (private).
 
-* **Module:** A module is a collection of related Go packages that are versioned together as a single unit. It is defined by a `go.mod` file at the root of the project directory. This file declares the module's path (its unique name), the version of Go it is built with, and its dependencies on other modules. A repository typically contains a single module.
+A distinctive feature of idiomatic Go is the use of short variable names. This is a deliberate choice guided by a simple but powerful principle: **the length of a variable's name should be proportional to its scope.**
 
-* **Package:** A package is a directory containing one or more Go source files. All files within a directory must belong to the same package, declared using the `package` keyword at the top of each file. A package provides a distinct namespace for its exported identifiers (those starting with a capital letter) and represents a single, coherent unit of functionality.
+* **Small Scope:** For a variable used only within a few lines (like a loop index), a short name like `i`, `k`, or `r` is ideal. The context is immediate, so a longer name would be unnecessary visual noise.
 
-Consider the following project structure:
+* **Larger Scope:** The farther a variable is used from its declaration, the more descriptive its name should be. A variable used throughout a function might be `count` or `customerID`, while a package-level variable would have a fully descriptive name like `MaxActiveConnections`.
 
-```sh
-/my-project
-├── go.mod         // Defines the 'my-project' module
-├── main.go        // package main
-|
-└───/calculator/
-    ├── add.go     // package calculator
-    └── subtract.go// package calculator
-```
+* **Context is Key:** Go's emphasis on small, focused packages means the surrounding code provides strong context. A variable `u` in a `users` package is clearly a user. This avoids redundant names like `userObject`.
 
-In this example:
+In essence, the convention encourages names that are concise but not cryptic, balancing brevity with clarity.
 
-1. The entire `my-project` directory constitutes a **module**, as defined by the `go.mod` file.
-2. The `main.go` file belongs to the special `main` **package**, which signifies an executable program.
-3. The `calculator` directory forms a separate **package** named `calculator`. It contains related functions for performing calculations, which can be imported and used by other packages (like `main`).
+## Package Layout
 
-## The `cmd` and `internal` Directories
+The file system structure defines packages. Idiomatic Go keeps packages small focused, and well-named. A package should do one thing and do it well. Refer to my observations of [Go Project Structure](./layout.md).
 
-Go's official documentation and the broader community recommend a specific directory layout to solve common problems:
+## Interfaces
 
-* `cmd/`: This directory should contain the source code for each of your main applications or executables. For example, if your project has a web server and a background worker, they would live in cmd/web and cmd/worker, respectively. This clearly separates your application entry points (which contain main packages) from the reusable library code.
+Idiomatic Go favours composition over inheritance and uses small, single-method interfaces. Instead of a class inheriting behavior, a Go struct implements an interface by simply having the required method. This promotes loose coupling and flexible design.
 
-* `internal/`: This is a special directory used for private packages that cannot be imported by other repositories. It's the primary mechanism for enforcing encapsulation. Any code you don’t want to be part of your public API or shared with other modules should go here.
-
-It is also important to note what to avoid: 
-
-* `src/` directory. This is a common pattern in other languages but is considered an anti-pattern in Go, as the entire Go workspace is already a source-code directory.
-
-* `pkg/` folder is often unnecessary and can become a dumping ground for packages.
+Refer to [interfaces working example](../customs/doc.md).
 
 ## References
 

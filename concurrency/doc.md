@@ -1,43 +1,38 @@
 # Concurrency
 
-A concurrent program is made up of code blocks that can run at the same time (see official [document](https://www.golang-book.com/books/intro/10)). However, concurrency is not the same as parallelism (see [Rob Pike](https://go.dev/blog/waza-talk))
+Concurrency is one of Go's most powerful and discussed features. My initial exploration has been to understand the distinction between concurrency and parallelism, a concept Rob Pike explains well (see official [document](https://www.golang-book.com/books/intro/10) and [Rob Pike's talk](https://go.dev/blog/waza-talk)). My notes here document my observations on the core components of Go's concurrency model.
 
-There are three basic elements of Go concurrency:
-
-- [Concurrency](#concurrency)
-  - [Channels](#channels)
-  - [Goroutines](#goroutines)
-  - [Waitgroup](#waitgroup)
-  - [Concurrency patterns](#concurrency-patterns)
-  - [References](#references)
+* [Channels](#channels)
+* [Goroutines](#goroutines)
+* [Waitgroup](#waitgroup)
+* [Concurrency patterns](#concurrency-patterns)
+* [References](#references)
 
 ## Channels
 
-Please refer to [this section](./channel/doc.md) for details
+Please refer to [channel](./channel/doc.md) for details
 
 ## Goroutines
 
-Adding the keyword `go` added to a function denotes a code block that can run in parallel if a processor supports it.
+Adding the `go` keyword before a function call creates a goroutine, which is a lightweight thread of execution.
 
-Here are the following examples:
+Here are my observations from the following examples:
 
-* [Example 1](./goroutine/ex1/main.go) - demonstrates a goroutine where main routine ends before goroutine completes.
-* [Example 2](./goroutine/ex2/main.go) demonstrates the main routine sleeping for 1s whilsts two Go routines run concurrently.
+* [Example 1](./goroutine/ex1/main.go) was a clear demonstration for me of how a program's main thread will not wait for a goroutine to complete. The program simply exits.
+* [Example 2](./goroutine/ex2/main.go) shows how a simple, though impractical, `sleep` can give concurrent routines time to run. This highlighted for me the need for a more robust mechanism to manage the lifecycle of goroutines.
 
 ## Waitgroup
 
-Waitgroups are elements that are used to manage goroutines which includes operations to wait until all goroutines are completed.
-
-Please refer to these [working examples](./waitgroup/main.go).
+The `sync.WaitGroup` provides a more reliable way to manage goroutines than arbitrary `sleeps`. My notes in this [working example](./waitgroup/main.go) show how to use it to wait for a collection of goroutines to finish their execution before the main program exits.
 
 ## Concurrency patterns
 
-Please refer to [GitHub repository for examples](https://github.com/paulwizviz/go-concurrency.git)
+Please refer to [Advance Go](https://github.com/paulwizviz/advanced-go.git)
 
 ## References
 
-- Matt Kodvb
-  - [Go Class: 22 What is Concurrency?](https://www.youtube.com/watch?v=A3R-4ZYBqvE&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
-  - [Go Class: 23 CSP, Goroutines, and Channels](https://www.youtube.com/watch?v=zJd7Dvg3XCk&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
-  - [Go Class: 24 Select](https://www.youtube.com/watch?v=tG7gII0Ax0Q&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
-  - [Go Class: 26 Channels in Detail](https://www.youtube.com/watch?v=fCkxKGd6CVQ&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+* Matt Kodvb
+  * [Go Class: 22 What is Concurrency?](https://www.youtube.com/watch?v=A3R-4ZYBqvE&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+  * [Go Class: 23 CSP, Goroutines, and Channels](https://www.youtube.com/watch?v=zJd7Dvg3XCk&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+  * [Go Class: 24 Select](https://www.youtube.com/watch?v=tG7gII0Ax0Q&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+  * [Go Class: 26 Channels in Detail](https://www.youtube.com/watch?v=fCkxKGd6CVQ&list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
