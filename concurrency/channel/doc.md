@@ -27,7 +27,7 @@ These examples demonstrate channel blocking operations.
 
 ### Example 1c - Synchronising channels
 
-In many real world scenarios, multiple messages sent to a sender. However, the receiver does not know when the sender has stopped sending messages. 
+In many real world scenarios, multiple messages sent to a sender. However, the receiver does not know when the sender has stopped sending messages.
 
 * [Example 1c1](./ex1c1/main.go) this scenario shows receiver attempting to receive more messages than is available, thus causing a deadlock.
 * [Example 1c2](./ex1c2/main.go) demonstrates closing a sender channel signalling to receiver not to expect any more messages.
@@ -49,7 +49,7 @@ These examples demonstrates the relationship between sender and receiver.
 ### Example 2b - Blocking operations
 
 This [Example 2b1](./ex2b1/main.go) shows sender is blocked because buffer is full.
-This [Example 2b2](./ex2b2/main.go) shows receiver is block because buffer is empty. 
+This [Example 2b2](./ex2b2/main.go) shows receiver is block because buffer is empty.
 
 ### Example 2c - Synchronising between goroutine
 
@@ -57,6 +57,5 @@ These examples show the use of signals to synchronise channels across goroutine.
 
 * [Example 2c1](./ex2c1/main.go) demonstrates receiver draining more messages than is available without safeguards to prevent deadlock.
 * [Example 2c2](./ex2c2/main.go) demionstrates the use of range to safeguard channels.
-* [Example 2c3](./ex2c3/main.go) demonstrates safeguard to ensure loop breaks when signal close is trigger. 
+* [Example 2c3](./ex2c3/main.go) demonstrates safeguard to ensure loop breaks when signal close is trigger.
 * [Example 2c4](./ex2c4/main.go) demonstrates the use of buffered function for asynchronous function.
-
