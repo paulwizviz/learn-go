@@ -2,6 +2,8 @@
 
 Concurrency is one of Go's most powerful and discussed features. My initial exploration has been to understand the distinction between concurrency and parallelism, a concept Rob Pike explains well (see official [document](https://www.golang-book.com/books/intro/10) and [Rob Pike's talk](https://go.dev/blog/waza-talk)). My notes here document my observations on the core components of Go's concurrency model.
 
+The topics I am covering here are:
+
 * [Channels](#channels)
 * [Goroutines](#goroutines)
 * [Waitgroup](#waitgroup)
@@ -23,7 +25,12 @@ Here are my observations from the following examples:
 
 ## Waitgroup
 
-The `sync.WaitGroup` provides a more reliable way to manage goroutines than arbitrary `sleeps`. My notes in this [working example](./waitgroup/main.go) show how to use it to wait for a collection of goroutines to finish their execution before the main program exits.
+The `sync.WaitGroup` provides a more reliable way to manage goroutines than arbitrary `sleeps`. It is used to wait for a collection of goroutines to finish their execution.
+
+My notes in these working examples demonstrate two approaches:
+
+* **[Pre-Go 1.25](./waitgroup/ex1/main.go):** This example shows the traditional implementation using `wg.Add()` and `wg.Done()`.
+* **[Go 1.25+](./waitgroup/ex2/main.go):** This example demonstrates the simpler, modern approach using the `wg.Go()` method, available from Go 1.25 onwards.
 
 ## Concurrency patterns
 
