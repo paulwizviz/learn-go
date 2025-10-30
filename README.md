@@ -17,9 +17,10 @@ Please think of these as my shared field notes, not as definitive statements on 
 * Patterns & Practices
   * [Context](./stdlib/context/doc.md)
   * [Embedding](./embed/doc.md)
-  * [Idiomatic Go](./concepts/idiomatic.md)
+  * [Project Layout](./concepts/layout.md)
   * [Templates](./templates/doc.md)
   * [Tests](./tests/doc.md)
+  * [Naming](./concepts/naming.md)
 
 ## References
 
