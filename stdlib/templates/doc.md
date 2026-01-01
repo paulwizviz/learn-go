@@ -14,7 +14,7 @@ Go provides data driven templates for generating textual output.
 
 The following are inbuilt functions in Go templates.
 
-### Comparison Functions:
+### Comparison Functions
 
 * `eq`: Returns true if the arguments are equal (arg1 == arg2).
 * `ne`: Returns true if the arguments are not equal (arg1 != arg2).

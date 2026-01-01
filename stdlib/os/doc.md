@@ -18,7 +18,7 @@ To see this example in action, follow these steps:
 * STEP 2: Run the app in `./temp/sig`
 * STEP 3: Kill sig process or execute ctl-c
 
-## Shell
+## Shell
 
 A shell is an program that enable users to interact with operating system's services.
 

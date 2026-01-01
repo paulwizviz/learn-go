@@ -2,7 +2,7 @@
 
 This section discuss techniques using the `embed` package use to embed and read files.
 
-## Mapping to []byte 
+## Mapping to []byte
 
 This example demonstrates a technique to map a specific file to []byte. Please refer to this [example](./ex1/main_test.go)
 

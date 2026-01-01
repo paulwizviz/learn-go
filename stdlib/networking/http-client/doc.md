@@ -15,11 +15,11 @@ You should drain the http.Response.Body before closing it primarily to **ensure 
 
 Here's a more detailed explanation:
 
-### How HTTP Keeps Connections Alive:
+### How HTTP Keeps Connections Alive
 
 For performance reasons, HTTP/1.1 and HTTP/2 often keep TCP connections alive after a request-response cycle is complete. This allows the client and server to send multiple requests and responses over the same persistent connection, reducing the overhead of establishing new connections for each request.
 
-### Why Draining the Body Matters for Connection Reuse:
+### Why Draining the Body Matters for Connection Reuse
 
 * **Reading the Entire Body**: To reuse a persistent connection, both the client and the server need to have fully processed the current request and response. This includes reading the entire response body.
 * **Unread Data Prevents Reuse**: If the client (in this case, your Go HTTP client) doesn't read the entire response body before closing it, the server might still be in the process of sending data. The unread data in the buffer can signal to the server that the client hasn't fully processed the response.
@@ -31,7 +31,7 @@ For performance reasons, HTTP/1.1 and HTTP/2 often keep TCP connections alive af
 * **When you don't read the entire body**: If your application logic only needs to examine the headers or a small part of the body and doesn't consume the rest, you should definitely drain the remaining data.
 * **For persistent connections**: If you intend to make subsequent requests to the same server over the same connection (which is the default behavior of http.Client), draining is crucial for efficient reuse.
 
-### Summary
+### Summary Draining the Body
 
 In summary, draining the http.Response.Body before closing it is a best practice to ensure proper handling of persistent connections, allowing for more efficient communication between your client and the server by enabling connection reuse. It signals that the entire response has been processed, preventing the server from prematurely closing the connection.
 
@@ -41,15 +41,15 @@ The error returned by resp.Body.Close() is an error type, just like any other er
 
 While closing an HTTP response body is usually a straightforward operation, there are potential (though less common) scenarios where it might return an error:
 
-### Possible Errors from resp.Body.Close():
+### Possible Errors from resp.Body.Close()
 
 * **Underlying Connection Issues**: If the underlying network connection has already been closed or is in a bad state, the Close() operation might return an error related to network communication.
 Resource Issues: In some rare cases, there might be issues with releasing resources associated with the body, although this is less common for HTTP responses compared to file operations.
 * **Implementation-Specific Errors**: The specific implementation of the ReadCloser returned as the resp.Body could potentially have its own specific error conditions for closing.
 
-### What You Can Do with the Error:
+### What You Can Do with the Error
 
-Even though errors from resp.Body.Close() are not very frequent or critical in most HTTP client scenarios, it's still good practice to handle them, especially in long-running applications or critical systems. 
+Even though errors from resp.Body.Close() are not very frequent or critical in most HTTP client scenarios, it's still good practice to handle them, especially in long-running applications or critical systems.
 
 Here's what you can do with the error:
 
@@ -61,6 +61,6 @@ Here's what you can do with the error:
 
 * **No Action (Ignoring the Error)**: In many simple HTTP client applications, the error from `resp.Body.Close()` is often ignored. The reasoning is that if closing the body fails, the underlying resources will eventually be reclaimed by the operating system when the program exits or the connection times out. However, explicitly ignoring errors can mask potential underlying problems, so logging is generally preferred.
 
-### Summary
+### Summary Handling Closing Error
 
 In summary, while errors from `resp.Body.Close()` are not common, it's a good practice to at least log them for debugging purposes. Ignoring them is often acceptable for simple applications, but more robust applications should consider logging or other forms of monitoring.

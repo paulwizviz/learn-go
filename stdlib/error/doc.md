@@ -6,7 +6,7 @@ This section illustrates techniques for handling errors and panic.
 
 The pattern to recover from panic is:
 
-```
+```go
 defer func() {
     if r := recover(); r != nil {
         fmt.Println("Recovered")
@@ -20,4 +20,3 @@ defer func() {
 
 [working examples](./customs_test.go)
 [standard package errors](./errors_test.go)
-

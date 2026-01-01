@@ -2,7 +2,6 @@
 
 In this section we discuss aspects of the Go Runtime.
 
-
 ## Working Examples
 
 * [Example 1](./ex1/main.go) - This demonstrates the return the number of virtual CPUs.

@@ -11,35 +11,35 @@ There are three rules to reflection:
 ## Indirect
 
 * Purpose:
-	* Returns the reflect.Value that v points to.
-	* If v is not a pointer, reflect.Indirect() returns v itself.
-	* It is used to get the value that a pointer reflects to.
+  * Returns the reflect.Value that v points to.
+  * If v is not a pointer, reflect.Indirect() returns v itself.
+  * It is used to get the value that a pointer reflects to.
 * Use Cases:
-	* Working with pointers and interfaces that might contain pointers.
-	* Dereferencing pointers to access the underlying values.
+  * Working with pointers and interfaces that might contain pointers.
+  * Dereferencing pointers to access the underlying values.
 
-## Typeof
+## Typeof
 
 * Purpose:
-	* Returns the `reflect.Type` of the value passed to it.
-	* The `reflect.Type` interface provides methods for inspecting the type's properties (e.g., name kind, methods, fields).
-	* It tells you about the static type of the value, or the dynamic type of the value held by an interface.   
+  * Returns the `reflect.Type` of the value passed to it.
+  * The `reflect.Type` interface provides methods for inspecting the type's properties (e.g., name kind, methods, fields).
+  * It tells you about the static type of the value, or the dynamic type of the value held by an interface.
 * Use Cases:
-	* Inspecting the structure of a type.
-	* Determining the type's kind (e.g., struct, slice, map).   
-	* Retrieving information about a type's methods or fields.
+  * Inspecting the structure of a type.
+  * Determining the type's kind (e.g., struct, slice, map).
+  * Retrieving information about a type's methods or fields.
 * [Working Example](typeof_test.go)
 
 ## ValueOf
 
 * Purpose:
-	* Returns the `reflect.Value` of the value passed to it.
-	* The `reflect.Value` struct provides methods for accessing and manipulating the value itself.
-	* It is used to get the actual value that is passed in.   
+  * Returns the `reflect.Value` of the value passed to it.
+  * The `reflect.Value` struct provides methods for accessing and manipulating the value itself.
+  * It is used to get the actual value that is passed in.
 * Use Cases:
-	* Accessing and modifying the value of variables.
-	* Calling methods of a value.
-	* Setting the fields of a struct.
+  * Accessing and modifying the value of variables.
+  * Calling methods of a value.
+  * Setting the fields of a struct.
 * [Working Example](valueof_test.go)
 
 ## Useful Resources

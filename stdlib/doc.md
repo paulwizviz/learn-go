@@ -6,6 +6,7 @@ My research will cover a range of packages, and I will be documenting my finding
 
 * [Context](./context/doc.md)
 * [Date & Time](./date/doc.md)
+* [Embedding](./embed/doc.md)
 * [Encoding](./encoding/doc.md)
 * [Error Handling](./error/doc.md)
 * [I/O](./io/doc.md)
@@ -14,5 +15,7 @@ My research will cover a range of packages, and I will be documenting my finding
 * [Operating System](./os/doc.md)
 * [Reflection](./reflection/doc.md)
 * [Runtime](./runtime/doc.md)
+* [Template](./templates/doc.md)
+* [Testing](./tests/doc.md)
 
 I will be adding more packages to this list as my research progresses. My goal is to create a comprehensive reference that I can use in the future and that may also be of benefit to others who are on a similar learning path.

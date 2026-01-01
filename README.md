@@ -9,17 +9,15 @@ Please think of these as my shared field notes, not as definitive statements on 
 ## Topics
 
 * Core Concepts
-  * [Basic Types](./types/doc.md)
-  * [Custom Types](./customs/doc.md)
-  * [Concurrency](./concurrency/doc.md)
+  * [Basic Types](./core/types/doc.md)
+  * [Custom Types](./core/customs/doc.md)
+  * [Concurrency](./core/concurrency/doc.md)
   * [Memory Management](./concepts/memory.md)
 
+* [Standard Liberary](./stdlib/doc.md)
+
 * Patterns & Practices
-  * [Context](./stdlib/context/doc.md)
-  * [Embedding](./embed/doc.md)
   * [Project Layout](./concepts/layout.md)
-  * [Templates](./templates/doc.md)
-  * [Tests](./tests/doc.md)
   * [Naming](./concepts/naming.md)
 
 ## References
