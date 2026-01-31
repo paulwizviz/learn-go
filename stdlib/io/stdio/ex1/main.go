@@ -25,6 +25,5 @@ func main() {
 		if strings.Compare("exit", text) == 0 {
 			os.Exit(0)
 		}
-
 	}
 }
